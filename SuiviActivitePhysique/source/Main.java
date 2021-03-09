@@ -1,3 +1,8 @@
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
+import modele.Categorie;
+import modele.Entrainement;
 
 /**
  * Controleur de l'pplication de suivi d'activité physique.
@@ -12,5 +17,8 @@ public class Main {
 	 */
 	public static void main(String[] parametres) {
 		System.out.println("Ouais ouais");
+		
+		Entrainement unFavoris = new Entrainement("https://www.youtube.com/user/OutLawzFR", Duration.of(24, ChronoUnit.MINUTES), Categorie.COURSE, "");
+		System.out.println(unFavoris);
 	}
 }
