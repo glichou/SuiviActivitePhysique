@@ -23,7 +23,7 @@ public class Utilisateur {
 		this.favoris = new ArrayList<Entrainement>();
 		this.activites = new ArrayList<Activite>();
 		this.prenom = prenom;
-		this.nom = nom;
+		this.nom = nom.toUpperCase();
 	}
 	
 	/**
@@ -72,5 +72,19 @@ public class Utilisateur {
 	 */
 	public ArrayList<Pouls> getMesurePouls(){
 		return this.pouls;
+	}
+	
+	/**
+	 * Récupérer le prénom de l'utilisateur.
+	 * @return Le prénom de l'utilisateur.
+	 */
+	public String getPrenom() {
+		return this.prenom;
+	}
+	
+	public String toString() {
+		return "==UTILISATEUR==\n" +
+				"Nom: " + nom + "\n" +
+				"Prénom: " + prenom + "\n";
 	}
 }

@@ -34,4 +34,8 @@ public class Entrainement {
 				"Categorie: " + categorie.name() + "\n" +
 				"Mémo: " + memo;
 	}
+	
+	public String getLien() {
+		return this.lien;
+	}
 }
