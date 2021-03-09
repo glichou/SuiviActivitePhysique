@@ -3,6 +3,7 @@ import java.time.temporal.ChronoUnit;
 
 import modele.Categorie;
 import modele.Entrainement;
+import modele.Utilisateur;
 
 /**
  * Controleur de l'pplication de suivi d'activité physique.
@@ -18,7 +19,11 @@ public class Main {
 	public static void main(String[] parametres) {
 		System.out.println("Ouais ouais");
 		
-		Entrainement unFavoris = new Entrainement("https://www.youtube.com/user/OutLawzFR", Duration.of(24, ChronoUnit.MINUTES), Categorie.COURSE, "");
-		System.out.println(unFavoris);
+		Utilisateur jean = new Utilisateur("Jean", "Bon");
+		
+		Entrainement marathon = new Entrainement("https://www.netflix.com/browse", Duration.of(24, ChronoUnit.HOURS), Categorie.COURSE, "Ne pas oublier le popcorn 🍿");
+		
+		jean.ajouterFavoris(marathon);
+		System.out.println(marathon);
 	}
 }

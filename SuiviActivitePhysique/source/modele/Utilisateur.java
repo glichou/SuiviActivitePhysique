@@ -12,6 +12,7 @@ public class Utilisateur {
 	private String prenom;
 	private ArrayList<Entrainement> favoris;
 	private ArrayList<Activite> activites;
+	private ArrayList<Pouls> pouls;
 	
 	/**
 	 * Contructeur de l'objet Utilisateur.
@@ -41,5 +42,35 @@ public class Utilisateur {
 		this.activites.add(activite);
 	}
 	
+	/**
+	 * Ajouter une mesure du pouls de l'utilisateur.
+	 * @param mesure La mesure à ajouter dans le profil de l'utilisateur.
+	 */
+	public void ajouterMesurePouls(Pouls mesure) {
+		this.pouls.add(mesure);
+	}
 	
+	/**
+	 * Récupérer les favoris de l'utilisateur.
+	 * @return Les favoris de l'utilisateur.
+	 */
+	public ArrayList<Entrainement> getFavoris() {
+		return this.favoris;
+	}
+
+	/**
+	 * Récupérer les activités de l'utilisateur.
+	 * @return Les activités de l'utilisateur.
+	 */
+	public ArrayList<Activite> getActivites() {
+		return this.activites;
+	}
+	
+	/**
+	 * Récupérer les mesure de pouls de l'utilisateur.
+	 * @return Les mesures de pouls de l'utilisateur.
+	 */
+	public ArrayList<Pouls> getMesurePouls(){
+		return this.pouls;
+	}
 }
