@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import modele.Categorie;
-import modele.Entrainement;
+import modele.Favoris;
 import modele.Utilisateur;
 
 /**
@@ -29,11 +29,11 @@ public class Main {
 		
 		Utilisateur jean = new Utilisateur("Jean", "Bon");
 		
-		Entrainement marathon = new Entrainement("https://www.netflix.com/browse", Duration.of(24, ChronoUnit.HOURS), Categorie.COURSE, "Ne pas oublier le popcorn 🍿");
+		Favoris marathon = new Favoris("https://www.netflix.com/browse", Duration.of(24, ChronoUnit.HOURS), Categorie.COURSE, "Ne pas oublier le popcorn 🍿");
 		jean.ajouterFavoris(marathon);
 		
 		System.out.println("Liste des favoris de " + jean.getPrenom() + ":");
-		ArrayList<Entrainement> liste = jean.getFavoris();
+		ArrayList<Favoris> liste = jean.getFavoris();
 		for(int compteur = 0; compteur < liste.size(); compteur++) {
 			System.out.println((compteur + 1) + "]\t" + liste.get(compteur).getLien());
 		}

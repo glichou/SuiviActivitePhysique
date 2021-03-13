@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Utilisateur {
 	private String nom;
 	private String prenom;
-	private ArrayList<Entrainement> favoris;
+	private ArrayList<Favoris> favoris;
 	private ArrayList<Activite> activites;
 	private ArrayList<Pouls> pouls;
 	
@@ -20,7 +20,7 @@ public class Utilisateur {
 	 * @param nom Le nom de l'utilisateur.
 	 */
 	public Utilisateur(String prenom, String nom) {
-		this.favoris = new ArrayList<Entrainement>();
+		this.favoris = new ArrayList<Favoris>();
 		this.activites = new ArrayList<Activite>();
 		this.prenom = prenom;
 		this.nom = nom.toUpperCase();
@@ -28,10 +28,10 @@ public class Utilisateur {
 	
 	/**
 	 * Ajouter un favoris dans la liste de l'utiliateur. 
-	 * @param entrainement L'entrainement à ajouter dans les favoris
+	 * @param favoris L'entrainement à ajouter dans les favoris
 	 */
-	public void ajouterFavoris(Entrainement entrainement) {
-		this.favoris.add(entrainement);
+	public void ajouterFavoris(Favoris favoris) {
+		this.favoris.add(favoris);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class Utilisateur {
 	 * Récupérer les favoris de l'utilisateur.
 	 * @return Les favoris de l'utilisateur.
 	 */
-	public ArrayList<Entrainement> getFavoris() {
+	public ArrayList<Favoris> getFavoris() {
 		return this.favoris;
 	}
 
