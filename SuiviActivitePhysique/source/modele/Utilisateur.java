@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class Utilisateur {
 	private String nom;
 	private String prenom;
+	private int taille;
+	private double poids;
 	private ArrayList<Favoris> favoris;
 	private ArrayList<Activite> activites;
 	private ArrayList<Pouls> pouls;
@@ -18,12 +20,16 @@ public class Utilisateur {
 	 * Contructeur de l'objet Utilisateur.
 	 * @param prenom Le prénom de l'utilisateur.
 	 * @param nom Le nom de l'utilisateur.
+	 * @param taille La taille de l'utilisateur en mètre.
+	 * @param poids Le poids de l'utilisateur en kg.
 	 */
-	public Utilisateur(String prenom, String nom) {
+	public Utilisateur(String prenom, String nom, int taille, double poids) {
 		this.favoris = new ArrayList<Favoris>();
 		this.activites = new ArrayList<Activite>();
 		this.prenom = prenom;
 		this.nom = nom.toUpperCase();
+		this.taille = taille;
+		this.poids = poids;
 	}
 	
 	/**
