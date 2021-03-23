@@ -1,6 +1,7 @@
 package controleur;
 
 import modele.ModeleApplication;
+import vue.VueActivite;
 import vue.VueApplication;
 
 /**
@@ -32,5 +33,14 @@ public class ControleurApplication {
 	 */
 	public void creerCompte(String prenom, String nom, int taille, double poids) {
 		this.modele.setUtilisateur(prenom, nom, taille, poids);
+	}
+
+	/**
+	 * Passer à la vue de l'activité.
+	 */
+	public void afficherMenuActivite() {
+		VueActivite vActivite = new VueActivite();
+		ControleurActivite cActivite = new ControleurActivite(this.modele, vActivite);
+		vActivite.afficherMenu();
 	}
 }

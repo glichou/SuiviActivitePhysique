@@ -35,23 +35,57 @@ public class VueApplication {
 		
 		//Initialiser l'application.
 		this.premierDemarrage();
+		int numeroSaisi;
 		
-		System.out.println("\t[ACCUEIL]\n");
-		System.out.println("ACTIVITÉ");
-		System.out.println("  1] Afficher les activités");
-		System.out.println("  2] Afficher une activité");
-		System.out.println("  3] Ajouter une activité");
-		System.out.println("FAVORIS");
-		System.out.println("  4] Afficher les favoris");
-		System.out.println("  5] Afficher un favoris");
-		System.out.println("  6] Ajouter un favoris");
-		System.out.println("\nVeuillez choisir une option: ");
+		//Afficher le menu tant que l'utilisateur ne souhaite pas sortir.
+		do {
+			System.out.println("\t[ACCUEIL]\n\n");
+			System.out.println("1] Activité");
+			System.out.println("2] Favoris");
+			System.out.println("3] QUITTER");
+			System.out.print("\nVeuillez choisir une option: ");
+			
+			//Récupérer la valeur saisie par l'utilisateur.
+			numeroSaisi = recupererNumeroOption(3);
+			System.out.println();
+			
+			// Executer l'action demandé par l'utilisateur.
+			switch(numeroSaisi) {
+				case 1:
+					controleur.afficherMenuActivite();
+					break;
+				case 2:
+					//faire l'option 2.
+					break;
+			}
+		} while(numeroSaisi != 3);
 		
+		//Parceque... pourquoi pas ?! 
 		afficherLogo();
-		
-		
 	}
 	
+	/**
+	 * Récupérer un numéro d'option valide saisit par l'utilisateur.
+	 * @param max Le numéro de la dernière option.
+	 * @return Le numéro saisit par l'utilisateur.
+	 */
+	private int recupererNumeroOption(int max) {
+		int numeroSaisi;
+		boolean valide = false;
+		
+		do {
+			while(!clavier.hasNextInt()) {
+				System.out.print("Veuillez saisir une option valide ! Entrez votre numéro: ");
+				clavier.next();
+			}
+			numeroSaisi = clavier.nextInt();
+			if(numeroSaisi > 0 && numeroSaisi <= max) {
+				valide = true;
+			}
+		} while (!valide);
+		
+		return numeroSaisi;
+	}
 	
 	/**
 	 * Afficher l'assistant de configuration de l'application
