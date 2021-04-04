@@ -1,11 +1,6 @@
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import controleur.ControleurApplication;
-import modele.Categorie;
-import modele.Favoris;
 import modele.ModeleApplication;
 import modele.Utilisateur;
 import vue.VueApplication;
