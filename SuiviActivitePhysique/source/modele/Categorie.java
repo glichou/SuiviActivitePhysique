@@ -24,6 +24,10 @@ public class Categorie {
 		return this.libelle;
 	}
 	
+	/**
+	 * Récupérer les informations sur la
+	 * catégorie.
+	 */
 	public String toString() {
 		return this.libelle;
 	}

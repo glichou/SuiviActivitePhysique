@@ -8,6 +8,10 @@ import modele.ModeleApplication;
 import vue.VueActivite;
 import vue.VueCategorie;
 
+/**
+ * Classe controleur.
+ * @author lichou
+ */
 public class ControleurCategorie {
 	private ModeleApplication modele;
 	private VueCategorie vue;

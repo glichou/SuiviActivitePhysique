@@ -5,7 +5,7 @@ import vue.VueActivite;
 import vue.VueApplication;
 
 /**
- * 
+ * Classe controleur.
  * @author lichou
  *
  */

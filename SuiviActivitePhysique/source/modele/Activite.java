@@ -2,6 +2,7 @@ package modele;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Représentation d'une activité physique.
@@ -70,5 +71,20 @@ public class Activite {
 		return this.distanceParcouru;
 	}
 	
-	
+	/**
+	 * Récupérer les informations sur l'activité.
+	 * @return La chaine de caractères
+	 */
+	public String toString() {
+		//Définir les formats pour la date et pour l'heure de début de l'activité.
+		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy");
+		DateTimeFormatter formatHeure = DateTimeFormatter.ofPattern("HH'h'mm");
+		
+		//Retourner les informations sur l'activité.
+		return 	"Catégorie: " + this.categorie.getLibelle() + "\n" +
+				"Date: " + this.debut.format(formatDate) + "\n" +
+				"Heure: " + this.debut.format(formatHeure) + "\n" +
+				"Durée: " + this.duree.toMinutes() + " minutes" + "\n" +
+				"Distance: " + this.distanceParcouru + " km" + "\n";
+	}
 }

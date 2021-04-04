@@ -36,7 +36,9 @@ public class Favoris {
 		return this.lien;
 	}
 	
-	
+	/**
+	 * Récupérer les informations d'un favoris.
+	 */
 	public String toString() {
 		return "==FAVORIS==\n" + 
 				"Lien: " + lien + "\n" +

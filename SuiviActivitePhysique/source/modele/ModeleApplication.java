@@ -1,5 +1,9 @@
 package modele;
 
+/**
+ * Modèle de l'application.
+ * @author lichou
+ */
 public class ModeleApplication {
 	private Utilisateur utilisateur;
 	

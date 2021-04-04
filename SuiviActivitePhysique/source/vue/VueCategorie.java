@@ -9,6 +9,10 @@ import controleur.ControleurCategorie;
 import modele.Activite;
 import modele.Categorie;
 
+/**
+ * Vue de la Catégorie.
+ * @author lichou
+ */
 public class VueCategorie{
 	private ControleurCategorie controleur;	
 	private Scanner clavier;

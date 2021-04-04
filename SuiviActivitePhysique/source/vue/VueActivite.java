@@ -14,6 +14,10 @@ import modele.Activite;
 import modele.Categorie;
 import modele.Difficulte;
 
+/**
+ * Classe vue
+ * @author lichou
+ */
 public class VueActivite {
 	private ControleurActivite controleur;	
 	private Scanner clavier;
@@ -35,6 +39,10 @@ public class VueActivite {
 		this.controleur = controleur;	
 	}
 	
+	/**
+	 * Afficher le menu principal de sélection des options
+	 * pour les activités.
+	 */
 	public void afficherMenu() {
 		int numeroSaisi;
 		
@@ -51,7 +59,7 @@ public class VueActivite {
 			numeroSaisi = recupererNumeroOption(4);
 			System.out.println();
 			
-			// Executer l'action demandé par l'utilisateur.
+			//Executer l'action demandé par l'utilisateur.
 			switch(numeroSaisi) {
 				case 1:
 					this.afficherLesActivites();
@@ -70,17 +78,25 @@ public class VueActivite {
 	 * Afficher l'ensemble des activités de l'utilisateurs.
 	 */
 	public void afficherLesActivites() {
+		//Récupérer les activités dans le profil de l'utilisateur.
 		ArrayList<Activite> liste = this.controleur.recupererActivites();
-		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy à HH'h'mm");
 		
-		int compteur = 0;
+		//Définir un format pour lisible pour la date.
+		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy 'à' HH'h'mm");
+		
+		//Afficher un message d'accueil.
 		System.out.println("Voici la liste de vos précédentes activités :");
+		
+		//Lister toutes les activités de l'utilisateur avec un identifiant s'il y en a.
+		int compteur = 1;
 		if(liste.size() > 0) {
 			for(Activite activite : liste){
-				compteur++;
+				//Afficher les informations sur l'activité et incrémenter le compteur.
 				System.out.println(compteur + "] [" + activite.getCategorie().getLibelle() + "] " + activite.getDebut().format(formatDate) + " (" + activite.getDuree().toMinutes() + " minutes)");
+				compteur++;
 			}
 		} else {
+			//Afficher un message car il n'y a pas d'activité dans la liste.
 			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
 		}
 		System.out.println();
@@ -90,35 +106,37 @@ public class VueActivite {
 	 * Afficher l'ensemble des activités de l'utilisateurs.
 	 */
 	public void afficherUneActivite() {
+		//Récupérer l'ensembles des activités de l'utilisateur.
 		ArrayList<Activite> liste = this.controleur.recupererActivites();
 		
-		int numeroSaisi = 0;
-		
-		//Vérifier qu'il y a des activités.
+		//Demander l'identifiant de l'activité si la lise n'est pas vide.
+		int index = 0;
 		if(liste.size() > 0) {
 			System.out.print("Veuillez saisir l'identifiant de l'activité : ");
 			
+			//Récupérer un index du tableau valide.
 			boolean valide = false;
+			int numeroSaisi = 0;
 			do {			
-				//Vérifier si on a bien un nombre en entrée.
 				if(!clavier.hasNextInt()) {
 					System.out.print("Veuillez saisir un nombre : ");
 				} else {
 					numeroSaisi = clavier.nextInt();
+					
 					if(numeroSaisi > 0 && numeroSaisi <= liste.size()) {
+						index = numeroSaisi - 1;
 						valide = true;
+					} else {
+						System.out.print("Veuillez une activité existante : ");
 					}
 				}
 			} while(!valide);
 			
-			DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy");
-			DateTimeFormatter formatHeure = DateTimeFormatter.ofPattern("HH'h'mm");
-			Activite activite = liste.get(numeroSaisi -1);
-			System.out.println("Catégorie: " + activite.getCategorie().getLibelle());
-			System.out.println("Date: " + activite.getDebut().format(formatDate));
-			System.out.println("Heure: " + activite.getDebut().format(formatHeure));
-			System.out.println("Durée: " + activite.getDuree().toMinutes() + " minutes");
-			System.out.println("Distance: " + activite.getDistanceParcouru() + " km");
+			//Récupérer l'activité dans la liste.
+			Activite activite = liste.get(index);
+			
+			//Afficher les informations sur l'activité.
+			System.out.println(activite);
 			System.out.println();
 			
 		} else {
@@ -225,7 +243,7 @@ public class VueActivite {
 		do {
 			chaine = clavier.nextLine().trim();
 			
-			//Enregistrer la date actuelle si champ vide.
+			//Récupérer et selectionner la date du jour si vide.
 			if(chaine.length() < 1 ) {
 				date = LocalDate.now();
 				System.out.println("La date actuelle " + date.format(format) + " a été selectionné.");

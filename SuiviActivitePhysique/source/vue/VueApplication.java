@@ -4,7 +4,10 @@ import java.util.Scanner;
 
 import controleur.ControleurApplication;
 
-
+/**
+ * Vue principale de l'application.
+ * @author lichou
+ */
 public class VueApplication {
 	private ControleurApplication controleur;	
 	private Scanner clavier;
