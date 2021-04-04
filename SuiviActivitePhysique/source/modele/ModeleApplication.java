@@ -21,4 +21,12 @@ public class ModeleApplication {
 	public Utilisateur getUtilisateur() {
 		return this.utilisateur;
 	}
+	
+	/**
+	 * Ajouter une activité dans le profil de l'utilisateur.
+	 * @param activite L'activité à ajouter.
+	 */
+	public void ajouterActivite(Activite activite) {
+		this.utilisateur.ajouterActivite(activite);
+	}
 }

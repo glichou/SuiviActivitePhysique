@@ -15,6 +15,7 @@ public class Utilisateur {
 	private ArrayList<Favoris> favoris;
 	private ArrayList<Activite> activites;
 	private ArrayList<Pouls> pouls;
+	private ArrayList<Categorie> categories;
 	
 	/**
 	 * Contructeur de l'objet Utilisateur.
@@ -30,6 +31,7 @@ public class Utilisateur {
 		this.nom = nom.toUpperCase();
 		this.taille = taille;
 		this.poids = poids;
+		this.categories = new ArrayList<Categorie>();
 	}
 	
 	/**
@@ -87,10 +89,26 @@ public class Utilisateur {
 	public String getPrenom() {
 		return this.prenom;
 	}
+
+	/**
+	 * Récupérer les catégories de l'utilisateur.
+	 * @return Les catégories de l'utilisateur.
+	 */
+	public ArrayList<Categorie> getCategories() {
+		return this.categories;
+	}
 	
 	public String toString() {
 		return "==UTILISATEUR==\n" +
 				"Nom: " + nom + "\n" +
 				"Prénom: " + prenom + "\n";
+	}
+	
+	/**
+	 * Ajouter une categorie dans le profil utilisateur.
+	 * @param categorie La catégorie de l'utilisateur.
+	 */
+	public void addCategorie(Categorie categorie) {
+		this.categories.add(categorie);
 	}
 }

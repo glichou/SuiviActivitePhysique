@@ -7,12 +7,12 @@ import controleur.ControleurFavoris;
 import modele.Favoris;
 
 
-public class vueFavoris {
+public class VueFavoris {
 	private ControleurFavoris controleur;
 	private Scanner clavier;
 	
 	
-	public vueFavoris() {
+	public VueFavoris() {
 		clavier = new Scanner(System.in);
 	}
 
@@ -30,7 +30,7 @@ public class vueFavoris {
 			System.out.println("1] Afficher les favoris");
 			System.out.println("2] Afficher un favori");
 			System.out.println("3] Ajouter un favori");
-			System.out.println("4] Revenir à l'accueil");
+			System.out.println("4] Revenir Ã  l'accueil");
 			System.out.print("\nSaisir l'option voulue: ");
 			
 			numeroSaisi = recupererNumeroOption(4);
@@ -65,7 +65,7 @@ public class vueFavoris {
 		
 		do {
 			while(!clavier.hasNextInt()) {
-				System.out.print("Veuillez saisir une option valide ! Entrez votre numéro: ");
+				System.out.print("Veuillez saisir une option valide ! Entrez votre numÃ©ro: ");
 				clavier.next();
 			}
 			numeroSaisi = clavier.nextInt();

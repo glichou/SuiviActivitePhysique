@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import modele.ModeleApplication;
 import modele.Favoris;
-import vue.vueFavoris;
+import vue.VueFavoris;
 
 public class ControleurFavoris {
 	private ModeleApplication modele;

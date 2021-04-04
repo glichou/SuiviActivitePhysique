@@ -41,7 +41,7 @@ public class Favoris {
 		return "==FAVORIS==\n" + 
 				"Lien: " + lien + "\n" +
 				"Durée: " + duree.toMinutes() + " minutes\n" +
-				"Categorie: " + categorie.name() + "\n" +
+				"Categorie: " + categorie.getLibelle() + "\n" +
 				"Mémo: " + memo;
 	}
 }

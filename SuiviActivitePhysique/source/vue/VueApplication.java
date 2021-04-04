@@ -39,7 +39,7 @@ public class VueApplication {
 		
 		//Afficher le menu tant que l'utilisateur ne souhaite pas sortir.
 		do {
-			System.out.println("\t[ACCUEIL]\n\n");
+			System.out.println("\t[ACCUEIL]\n");
 			System.out.println("1] Activité");
 			System.out.println("2] Favoris");
 			System.out.println("3] QUITTER");
@@ -81,6 +81,8 @@ public class VueApplication {
 			numeroSaisi = clavier.nextInt();
 			if(numeroSaisi > 0 && numeroSaisi <= max) {
 				valide = true;
+			} else {
+				System.out.print("Veuillez saisir une option valide ! Entrez votre numéro: ");
 			}
 		} while (!valide);
 		
