@@ -71,10 +71,16 @@ public class Activite {
 		return this.distanceParcouru;
 	}
 	
+	
+	public String toSmallString() {
+		return "";
+	}
+	
 	/**
 	 * Récupérer les informations sur l'activité.
 	 * @return La chaine de caractères
 	 */
+	@Override
 	public String toString() {
 		//Définir les formats pour la date et pour l'heure de début de l'activité.
 		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy");

@@ -14,7 +14,7 @@ public class Utilisateur {
 	private double poids;
 	private ArrayList<Favoris> favoris;
 	private ArrayList<Activite> activites;
-	private ArrayList<Pouls> pouls;
+	private ArrayList<Mesure> mesures;
 	private ArrayList<Categorie> categories;
 	
 	/**
@@ -31,6 +31,7 @@ public class Utilisateur {
 		this.nom = nom.toUpperCase();
 		this.taille = taille;
 		this.poids = poids;
+		this.mesures = new ArrayList<Mesure>();
 		this.categories = new ArrayList<Categorie>();
 	}
 	
@@ -51,11 +52,11 @@ public class Utilisateur {
 	}
 	
 	/**
-	 * Ajouter une mesure du pouls de l'utilisateur.
+	 * Ajouter une mesure de l'utilisateur.
 	 * @param mesure La mesure à ajouter dans le profil de l'utilisateur.
 	 */
-	public void ajouterMesurePouls(Pouls mesure) {
-		this.pouls.add(mesure);
+	public void ajouterMesure(Mesure mesure) {
+		this.mesures.add(mesure);
 	}
 	
 	/**
@@ -75,11 +76,11 @@ public class Utilisateur {
 	}
 	
 	/**
-	 * Récupérer les mesure de pouls de l'utilisateur.
-	 * @return Les mesures de pouls de l'utilisateur.
+	 * Récupérer les mesure de l'utilisateur.
+	 * @return Les mesures de l'utilisateur.
 	 */
-	public ArrayList<Pouls> getMesurePouls(){
-		return this.pouls;
+	public ArrayList<Mesure> getMesures(){
+		return this.mesures;
 	}
 	
 	/**
@@ -98,6 +99,9 @@ public class Utilisateur {
 		return this.categories;
 	}
 	
+	/**
+	 * 
+	 */
 	public String toString() {
 		return "==UTILISATEUR==\n" +
 				"Nom: " + nom + "\n" +

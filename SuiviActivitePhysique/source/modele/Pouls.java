@@ -8,17 +8,16 @@ import java.time.ZoneId;
  * @author lichou
  * @version 0.1
  */
-public class Pouls {
+public class Pouls extends Mesure{
 	private short frequence;
-	private LocalDateTime date;
 	
 	/**
 	 * Constructeur d'objet de la classe Pouls.
 	 * @param frequence La fréquence cardiaque (en bpm).
 	 */
 	public Pouls(short frequence) {
+		super(LocalDateTime.now(ZoneId.of("UTC")));
 		this.frequence = frequence;
-		this.date = LocalDateTime.now(ZoneId.of("UTC"));
 	}
 	
 	/**
@@ -27,7 +26,7 @@ public class Pouls {
 	 * @param date La date de la mesure du poul.
 	 */
 	public Pouls(short frequence, LocalDateTime date) {
+		super(date);
 		this.frequence = frequence;
-		this.date = date;
 	}
 }
