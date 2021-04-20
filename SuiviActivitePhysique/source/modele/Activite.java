@@ -71,9 +71,13 @@ public class Activite {
 		return this.distanceParcouru;
 	}
 	
-	
+	/**
+	 * Récupérer un extrait des informations de l'activités
+	 * @return La chaine de caractères
+	 */
 	public String toSmallString() {
-		return "";
+		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy 'à' HH'h'mm");
+		return "[" + this.categorie.getLibelle() + "] " + this.debut.format(formatDate) + " (" + this.duree.toMinutes() + " minutes)";
 	}
 	
 	/**

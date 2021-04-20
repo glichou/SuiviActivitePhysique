@@ -100,12 +100,14 @@ public class Utilisateur {
 	}
 	
 	/**
-	 * 
+	 * Récupérer les informations de l'utilisateur.
 	 */
 	public String toString() {
 		return "==UTILISATEUR==\n" +
 				"Nom: " + nom + "\n" +
-				"Prénom: " + prenom + "\n";
+				"Prénom: " + prenom + "\n" +
+				"Taille: " + taille + "cm\n" +
+				"Poids: " + poids + "kg\n";
 	}
 	
 	/**

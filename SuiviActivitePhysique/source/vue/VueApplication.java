@@ -119,7 +119,7 @@ public class VueApplication {
 	 * @param clavier Le clavier en entrée.
 	 * @return Le poids saisit par l'utilisateur.
 	 */
-	private static double recupererPoids(Scanner clavier) {
+	private double recupererPoids(Scanner clavier) {
 		double poids;
 		boolean valide = false;
 		do {
@@ -144,7 +144,7 @@ public class VueApplication {
 	 * @param clavier Le clavier en entrée.
 	 * @return La taille saisit par l'utilisateur.
 	 */
-	private static String recupererNom(Scanner clavier) {
+	private String recupererNom(Scanner clavier) {
 		String nom;
 		boolean valide = false;
 		do {
@@ -165,7 +165,7 @@ public class VueApplication {
 	 * @param clavier Le clavier en entrée.
 	 * @return La taille saisit par l'utilisateur.
 	 */
-	private static int recupererTaille(Scanner clavier) {
+	private int recupererTaille(Scanner clavier) {
 		int taille;
 		boolean valide = false;
 		do {

@@ -81,19 +81,13 @@ public class VueActivite {
 		//Récupérer les activités dans le profil de l'utilisateur.
 		ArrayList<Activite> liste = this.controleur.recupererActivites();
 		
-		//Définir un format pour lisible pour la date.
-		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy 'à' HH'h'mm");
-		
 		//Afficher un message d'accueil.
 		System.out.println("Voici la liste de vos précédentes activités :");
 		
 		//Lister toutes les activités de l'utilisateur avec un identifiant s'il y en a.
-		int compteur = 1;
 		if(liste.size() > 0) {
-			for(Activite activite : liste){
-				//Afficher les informations sur l'activité et incrémenter le compteur.
-				System.out.println(compteur + "] [" + activite.getCategorie().getLibelle() + "] " + activite.getDebut().format(formatDate) + " (" + activite.getDuree().toMinutes() + " minutes)");
-				compteur++;
+			for(int index = 0; index < liste.size(); index++) {
+				System.out.println((index + 1) + "] "  + liste.get(index).toSmallString());
 			}
 		} else {
 			//Afficher un message car il n'y a pas d'activité dans la liste.
