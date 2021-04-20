@@ -1,13 +1,12 @@
 package modele;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-/**
- * Représentation d'un favoris
- * @author lichou
- * @version 0.1
- */
+
 public class Favoris {
+	private LocalDateTime debut;
 	private String lien;
 	private String memo;
 	private Duration duree;
@@ -20,7 +19,8 @@ public class Favoris {
 	 * @param categorie La catégorie de l'entrainement.
 	 * @param memo Un mémo définit par l'utilisateur.
 	 */
-	public Favoris(String lien, Duration duree, Categorie categorie, String memo) {
+	public Favoris(LocalDateTime date, String lien, Duration duree, Categorie categorie, String memo) {
+		this.debut = date;
 		this.lien = lien;
 		this.duree = duree;
 		this.categorie =  categorie;
@@ -28,22 +28,21 @@ public class Favoris {
 	}
 	
 	
-	/**
-	 * Récupérer le lien du favoris.
-	 * @return Le lien hypertexte vers le contenu.
-	 */
+
 	public String getLien() {
 		return this.lien;
 	}
 	
-	/**
-	 * Récupérer les informations d'un favoris.
-	 */
+
 	public String toString() {
-		return "==FAVORIS==\n" + 
+		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy");
+		DateTimeFormatter formatHeure = DateTimeFormatter.ofPattern("HH'h'mm");
+		
+		return  "Date: " + this.debut.format(formatDate) + "\n" +
+				"Heure: " + this.debut.format(formatHeure) + "\n" + 
 				"Lien: " + lien + "\n" +
-				"Durée: " + duree.toMinutes() + " minutes\n" +
+				"Dur�e: " + duree.toMinutes() + " minutes\n" +
 				"Categorie: " + categorie.getLibelle() + "\n" +
-				"Mémo: " + memo;
+				"M�mo: " + memo;
 	}
 }

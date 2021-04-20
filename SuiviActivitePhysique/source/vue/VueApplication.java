@@ -58,7 +58,7 @@ public class VueApplication {
 					controleur.afficherMenuActivite();
 					break;
 				case 2:
-					//faire l'option 2.
+					controleur.afficherMenuFavori();
 					break;
 			}
 		} while(numeroSaisi != 3);

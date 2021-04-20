@@ -1,9 +1,15 @@
 package controleur;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import modele.ModeleApplication;
+import modele.Activite;
+import modele.Categorie;
+import modele.Difficulte;
 import modele.Favoris;
+import vue.VueCategorie;
 import vue.VueFavoris;
 
 /**
@@ -32,5 +38,16 @@ public class ControleurFavoris {
 	public ArrayList<Favoris> recupererFavoris(){
 		return this.modele.getUtilisateur().getFavoris();
 	}
-
+	
+	
+	public void ajouterUnFavori(LocalDateTime date, String lien, Duration duree, Categorie categorie, String memo) {
+		Favoris favoris = new Favoris(date, lien, duree, categorie, memo);
+		this.modele.ajouterUnFavori(favoris);
+	}
+	
+	public Categorie afficherSelectionCategorie() {
+		VueCategorie vCategorie = new VueCategorie();
+		ControleurCategorie cCategorie = new ControleurCategorie(this.modele, vCategorie);
+		return vCategorie.selectionnerCategorie();
+	}
 }
