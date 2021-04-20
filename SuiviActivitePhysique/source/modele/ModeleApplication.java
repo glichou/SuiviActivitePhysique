@@ -33,4 +33,8 @@ public class ModeleApplication {
 	public void ajouterActivite(Activite activite) {
 		this.utilisateur.ajouterActivite(activite);
 	}
+	
+	public void ajouterUnFavori(Favoris favori) {
+		this.utilisateur.ajouterFavoris(favori);
+	}
 }

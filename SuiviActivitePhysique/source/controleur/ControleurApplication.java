@@ -3,6 +3,7 @@ package controleur;
 import modele.ModeleApplication;
 import vue.VueActivite;
 import vue.VueApplication;
+import vue.VueFavoris;
 
 /**
  * Classe controleur.
@@ -42,5 +43,12 @@ public class ControleurApplication {
 		VueActivite vActivite = new VueActivite();
 		ControleurActivite cActivite = new ControleurActivite(this.modele, vActivite);
 		vActivite.afficherMenu();
+	}
+
+	public void afficherMenuFavori() {
+		VueFavoris vFavori = new VueFavoris();
+		ControleurFavoris cFavori = new ControleurFavoris(this.modele, vFavori);
+		vFavori.afficherMenu();
+	
 	}
 }
