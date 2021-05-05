@@ -13,6 +13,7 @@ import controleur.ControleurActivite;
 import modele.Activite;
 import modele.Categorie;
 import modele.Difficulte;
+import utilitaire.Clavier;
 
 /**
  * Classe vue
@@ -20,14 +21,14 @@ import modele.Difficulte;
  */
 public class VueActivite {
 	private ControleurActivite controleur;	
-	private Scanner clavier;
+	private Clavier clavier;
 	
 	/**
 	 * Constructeur de la classe de VueActivite.
 	 */
 	public VueActivite() {
 		//Créer un objet pour récupérer le texte saisit.
-		clavier = new Scanner(System.in);
+		clavier = new Clavier(System.in);
 	}
 	
 	
@@ -56,7 +57,7 @@ public class VueActivite {
 			System.out.print("\nSaisir l'option voulue: ");
 			
 			//Récupérer la valeur saisie par l'utilisateur.
-			numeroSaisi = recupererNumeroOption(4);
+			numeroSaisi = clavier.recupererNombre(0, 4);
 			System.out.println();
 			
 			//Executer l'action demandé par l'utilisateur.
@@ -107,27 +108,9 @@ public class VueActivite {
 		int index = 0;
 		if(liste.size() > 0) {
 			System.out.print("Veuillez saisir l'identifiant de l'activité : ");
+			index = clavier.recupererNombre(1, liste.size());
 			
-			//Récupérer un index du tableau valide.
-			boolean valide = false;
-			int numeroSaisi = 0;
-			do {			
-				if(!clavier.hasNextInt()) {
-					System.out.print("Veuillez saisir un nombre : ");
-				} else {
-					numeroSaisi = clavier.nextInt();
-					
-					if(numeroSaisi > 0 && numeroSaisi <= liste.size()) {
-						index = numeroSaisi - 1;
-						valide = true;
-					} else {
-						System.out.print("Veuillez une activité existante : ");
-					}
-				}
-			} while(!valide);
-			
-			//Récupérer l'activité dans la liste.
-			Activite activite = liste.get(index);
+			Activite activite = liste.get(index - 1);
 			
 			//Afficher les informations sur l'activité.
 			System.out.println(activite);
@@ -145,16 +128,15 @@ public class VueActivite {
 	 */
 	public void ajouterUneActivite() {
 		System.out.println("Veuillez saisir les informations de l'activité: \n");
-		clavier.nextLine();
 		//LocalDateTime date, Difficulte difficulte, Duration duree, long distance
 		System.out.print("Jour (format JJ/MM/AAAA): ");
-		LocalDate date = recupererDate();
+		LocalDate date = clavier.recupererDate(true);
 		System.out.print("Heure (format HHhmm): ");
-		LocalTime heure = recupererHeure();
+		LocalTime heure = clavier.recupererHeure(true);
 		System.out.print("Durée (minutes): ");
-		Duration duree = recupererDuree();
+		Duration duree = clavier.recupererDuree(1, 2880);
 		System.out.print("Distance (km): ");
-		long distance = recupererDistance();
+		long distance = clavier.recupererGrandNombre(1, 10000);
 		Categorie categorie = this.controleur.afficherSelectionCategorie();
 		System.out.println();
 		
@@ -163,153 +145,5 @@ public class VueActivite {
 		
 		//Ajouter l'activité.
 		this.controleur.ajouterUneActivite(dateDebut, Difficulte.CINQ, duree, distance, categorie);
-	}
-	
-	/**
-	 * Récupérer la distance parcourue saisit par l'utilisateur.
-	 * @return La distance parcouru.
-	 */
-	private long recupererDistance() {
-		boolean valide = false;
-		long distance = 0;
-		
-		do {			
-			//Vérifier si on a bien un nombre en entrée.
-			if(!clavier.hasNextLong()) {
-				System.out.print("Distance non valide. Essayez à nouveau : ");
-
-			} else {
-				distance = clavier.nextLong();
-				valide = true;
-			}
-		} while(!valide);
-		
-		return distance;
-	}
-
-	/**
-	 * Récupérer l'heure saisit par l'utilisateur.
-	 * @return L'heure saisit par l'utilisateur.
-	 */
-	private LocalTime recupererHeure() {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("H'h'mm");
-		LocalTime heure = null;
-		boolean valide = false;
-		String chaine;
-
-		do {
-			chaine = clavier.nextLine().trim();
-			
-			//Enregistrer l'heure actuelle si champ vide.
-			if(chaine.length() < 1 ) {
-				heure = LocalTime.now();
-				System.out.println("L'heure actuelle " + heure.format(format) + " a été selectionné.");
-				valide = true;
-			
-			//Vérifier que la date semble viable.
-			} else if (!chaine.matches("(0[0-9]|1[0-9]|2[0-3])h([0-5][0-9])")) {
-				System.out.print("Format d'heure non valide. Essayez à nouveau : ");
-				
-			//La date est semble bonne, essayer de l'enregistrer.
-			} else {
-				try {
-					heure = LocalTime.parse(chaine, format);
-					valide = true;
-				} catch(DateTimeParseException exception) {
-					System.out.print("Il y a une erreur dans la date. Essayez à nouveau : ");
-				}
-			}
-		} while(!valide);
-		
-		return heure;
-	}
-	
-	/**
-	 * Récupérer une date valide saisie par l'utilisateur.
-	 * @return La date saisie par l'utilisateur.
-	 */
-	private LocalDate recupererDate() {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd'/'MM'/'yyyy");
-		LocalDate date = null;
-		boolean valide = false;
-		String chaine;
-
-		do {
-			chaine = clavier.nextLine().trim();
-			
-			//Récupérer et selectionner la date du jour si vide.
-			if(chaine.length() < 1 ) {
-				date = LocalDate.now();
-				System.out.println("La date actuelle " + date.format(format) + " a été selectionné.");
-				valide = true;
-			
-			//Vérifier que la date semble viable et l'enregistrer dans ce cas.
-			} else {
-				try {
-					date = LocalDate.parse(chaine, format);
-					valide = true;
-				} catch(DateTimeParseException exception) {
-					System.out.print("Il y a une erreur dans la date. Essayez à nouveau : ");
-				}
-			}
-		} while(!valide);
-		
-		return date;
-	}
-	
-	
-	
-	/**
-	 * Récupérer une date valide saisie par l'utilisateur.
-	 * @return La date saisie par l'utilisateur.
-	 */
-	private Duration recupererDuree() {
-		Duration duree = null;
-		boolean valide = false;
-		long valeur;
-		
-		do {			
-			//Vérifier si on a bien un nombre en entrée.
-			if(!clavier.hasNextLong()) {
-				System.out.print("Durée non valide. Essayez à nouveau : ");
-			} else {
-				valeur = clavier.nextLong();
-				
-				//Vérifier que la valeur semble valable.
-				if(valeur > 0 && valeur <= 2880) {
-					duree = Duration.ofMinutes(valeur);
-					valide = true;
-				} else {
-					System.out.print("Durée invalide ! Essayez à nouveau : ");
-				}
-			}
-		} while(!valide);
-		
-		return duree;
-	}
-	
-	/**
-	 * Récupérer un numéro d'option valide saisit par l'utilisateur.
-	 * @param max Le numéro de la dernière option.
-	 * @return Le numéro saisit par l'utilisateur.
-	 */
-	private int recupererNumeroOption(int max) {
-		int numeroSaisi;
-		boolean valide = false;
-		
-		do {
-			while(!clavier.hasNextInt()) {
-				System.out.print("Veuillez saisir une option valide ! Entrez votre numéro: ");
-				clavier.next();
-			}
-			numeroSaisi = clavier.nextInt();
-			if(numeroSaisi > 0 && numeroSaisi <= max) {
-				valide = true;
-			} else {
-				System.out.print("Veuillez saisir une option valide ! Entrez votre numéro: ");
-			}
-		} while (!valide);
-		
-		return numeroSaisi;
 	}
 }

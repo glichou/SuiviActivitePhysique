@@ -37,7 +37,7 @@ public class ControleurCategorie {
 	
 	/**
 	 * Ajouter une catégorie dans le profil de l'utilisateur.
-	 * @param chaine Le libelle de la catégorie.
+	 * @param libelle Le libelle de la catégorie.
 	 */
 	public void ajouterCategorie(String libelle) {
 		Categorie categorie = new Categorie(libelle);

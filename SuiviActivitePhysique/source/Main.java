@@ -1,5 +1,6 @@
 import controleur.ControleurApplication;
 import modele.ModeleApplication;
+import utilitaire.Clavier;
 import vue.VueApplication;
 
 /**
@@ -11,9 +12,11 @@ public class Main {
 	
 	/**
 	 * Point d'entrée de l'application de suivi d'activité physique.
-	 * @param paramètres Les paramètres en entrée de l'application.
+	 * @param parametres Les paramètres en entrée de l'application.
 	 */
 	public static void main(String[] parametres) {
+		Clavier.effacerEcran();
+		//System.out.println(System.getProperty("os.name"));
 		
 		//Mettre en place l'application.
 		ModeleApplication modele = new ModeleApplication();

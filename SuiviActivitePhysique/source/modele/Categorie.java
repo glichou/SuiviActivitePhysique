@@ -1,7 +1,7 @@
 package modele;
 
 /**
- * Liste des catégorie d'activités
+ * Représentation d'une catégorie.
  * @author lichou
  * @version 0.1
  */

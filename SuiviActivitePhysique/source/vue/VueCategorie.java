@@ -56,7 +56,7 @@ public class VueCategorie{
 			}
 			
 			//Ajouter une option à la liste pour créer une nouvelle catégorie.
-			System.out.println("  " +compteur + "] Nouveau...");
+			System.out.println("  " + compteur + "] Nouveau...");
 			
 			//Afficher le message de demande.
 			System.out.print("\nSélectionnez le numéro souhaité : ");

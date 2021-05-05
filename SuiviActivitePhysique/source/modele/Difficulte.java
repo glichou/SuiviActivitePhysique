@@ -1,7 +1,7 @@
 package modele;
 
 /**
- * Liste des niveaux de difficultés sur une
+ * Niveaux de difficultés d'une activité
  * échelle allant de 1 à 10.
  * @author lichou
  * @version 0.1

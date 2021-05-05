@@ -40,8 +40,8 @@ public class ControleurFavoris {
 	}
 	
 	
-	public void ajouterUnFavori(LocalDateTime date, String lien, Duration duree, Categorie categorie, String memo) {
-		Favoris favoris = new Favoris(date, lien, duree, categorie, memo);
+	public void ajouterUnFavori(String titre, String lien, Duration duree, Categorie categorie, String memo) {
+		Favoris favoris = new Favoris(titre, lien, duree, categorie, memo);
 		this.modele.ajouterUnFavori(favoris);
 	}
 	

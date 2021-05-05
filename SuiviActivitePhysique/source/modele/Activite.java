@@ -22,6 +22,7 @@ public class Activite {
 	 * @param difficulte La difficulté ressentie de l'activité
 	 * @param duree La durée de l'activité
 	 * @param distance La distance parcouru lors de l'activité.
+	 * @param categorie La catégorie de l'activité.
 	 */
 	public Activite(LocalDateTime date, Difficulte difficulte, Duration duree, long distance, Categorie categorie) {
 		this.debut = date;
