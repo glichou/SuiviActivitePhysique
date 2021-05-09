@@ -10,6 +10,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import modele.Pouls;
+
 /**
  * Classe utilitaire permettant la mutualisation des
  * fonctions de contrôle de la saisie.
@@ -214,8 +216,7 @@ public class Clavier {
 		String chaine = null;
 		boolean valide = false;
 		
-		Pattern modele = Pattern.compile("^(https?://)?[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
-		
+		Pattern modele = Pattern.compile("(?:(?<protocole>https?)://)?(www\\.)?(?<domaine>([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,61}[a-z0-9])(?:(?:(?:(?:/[a-zA-Z_0-9\\.-]+)+/?)|/)(?:\\?[^#]*)?(?:#[a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9])?)?");
 		
 		while(!valide) {
 			chaine = clavier.nextLine().trim();
@@ -233,6 +234,15 @@ public class Clavier {
 			}
 		}
 		return chaine;
+	}
+	
+	
+	public Pouls recupererMesurePouls() {
+		Pouls mesure = null;
+		
+		
+		
+		return mesure;
 	}
 	
 	/**
@@ -280,9 +290,9 @@ public class Clavier {
 				if(chiffreAutorise && espaceAutorise) {
 					valide = true;
 				} else {
-					if(!chiffreAutorise && chaine.matches("\\p{N}")) {
+					if(!chiffreAutorise && chaine.matches("(.*)\\p{N}(.*)")) {
 						System.out.print("Vous avez saisi un chiffre. Veuillez saisir un texte sans chiffre : ");
-					} else if(!espaceAutorise && chaine.matches("\\p{Zs}")) {
+					} else if(!espaceAutorise && chaine.matches("(.*)\\p{Zs}(.*)")) {
 						System.out.print("Vous avez saisi un espace. Veuillez saisir un texte sans espace : ");
 					} else {
 						valide = true;

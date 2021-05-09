@@ -36,11 +36,18 @@ public class ControleurCategorie {
 	}
 	
 	/**
+	 * Récupérer le nombre de catégorie de l'utilisateur.
+	 * @return Le nombre de catégorie.
+	 */
+	public int getNbCategorie() {
+		return this.modele.getUtilisateur().getNbCategories();
+	}
+	
+	/**
 	 * Ajouter une catégorie dans le profil de l'utilisateur.
 	 * @param libelle Le libelle de la catégorie.
 	 */
-	public void ajouterCategorie(String libelle) {
-		Categorie categorie = new Categorie(libelle);
-		this.modele.getUtilisateur().addCategorie(categorie);
-	}	
+	public boolean ajouterCategorie(Categorie categorie) {
+		return this.modele.getUtilisateur().ajouterCategorie(categorie);
+	}
 }

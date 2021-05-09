@@ -60,6 +60,30 @@ public class Utilisateur {
 	}
 	
 	/**
+	 * Vérifier un favoris existe dans la liste de l'utilisateur.
+	 * @param favoris Le favoris dont ont souhaite vérifier l'existance.
+	 * @return true s'il existe, false sinon.
+	 */
+	public boolean favorisExiste(Favoris favoris) {
+		return this.favoris.contains(favoris);
+	}
+	
+	/**
+	 * Récupérer un favoris à un index particulier.
+	 * @param index L'index du favoris.
+	 * @return Le favoris à l'index donné.
+	 * @throws Exception Lever une exception s'il n'y a
+	 * pas de favoris à cet index.
+	 */
+	public Favoris recupererFavoris(int index) throws Exception {
+		if(index >= 0 && index < this.favoris.size()) {
+			return this.favoris.get(index);
+		} else {
+			throw new Exception();
+		}
+	}
+	
+	/**
 	 * Récupérer les favoris de l'utilisateur.
 	 * @return Les favoris de l'utilisateur.
 	 */
@@ -100,6 +124,38 @@ public class Utilisateur {
 	}
 	
 	/**
+	 * Vérifier une catégorie existe dans la liste de l'utilisateur.
+	 * @param categorie La catégorie dont ont souhaite vérifier l'existance.
+	 * @return true s'il existe, false sinon.
+	 */
+	public boolean categorieExiste(Categorie categorie) {
+		return this.categories.contains(categorie);
+	}
+	
+	/**
+	 * Récupérer une catégorie à un index particulier.
+	 * @param index L'index de la catégorie.
+	 * @return La catégorie à l'index donné.
+	 * @throws Exception Lever une exception s'il n'y a
+	 * pas de catégorie à cet index.
+	 */
+	public Categorie recupererCategorie(int index) throws Exception {
+		if(index >= 0 && index < this.categories.size()) {
+			return this.categories.get(index);
+		} else {
+			throw new Exception();
+		}
+	}
+	
+	/**
+	 * Récupérer le nombre de catégorie de l'utilisateur.
+	 * @return Le nombre de catégorie.
+	 */
+	public int getNbCategories() {
+		return this.categories.size();
+	}
+	
+	/**
 	 * Récupérer les informations de l'utilisateur.
 	 */
 	public String toString() {
@@ -114,7 +170,7 @@ public class Utilisateur {
 	 * Ajouter une categorie dans le profil utilisateur.
 	 * @param categorie La catégorie de l'utilisateur.
 	 */
-	public void addCategorie(Categorie categorie) {
-		this.categories.add(categorie);
+	public boolean ajouterCategorie(Categorie categorie) {
+		return (!categorieExiste(categorie) && this.categories.add(categorie));
 	}
 }

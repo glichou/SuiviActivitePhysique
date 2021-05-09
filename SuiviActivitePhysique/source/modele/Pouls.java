@@ -8,7 +8,7 @@ import java.time.ZoneId;
  * @author lichou
  * @version 0.1
  */
-public class Pouls extends Mesure{
+public class Pouls extends Mesure {
 	private short frequence;
 	
 	/**
@@ -16,7 +16,7 @@ public class Pouls extends Mesure{
 	 * @param frequence La fréquence cardiaque (en bpm).
 	 */
 	public Pouls(short frequence) {
-		super(LocalDateTime.now(ZoneId.of("UTC")));
+		super();
 		this.frequence = frequence;
 	}
 	

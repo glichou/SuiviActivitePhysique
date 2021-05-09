@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
  * @author lichou
  * @version 0.1
  */
-public class Activite {
+public class Activite implements Comparable<Activite> {
 	private LocalDateTime debut;
 	private Difficulte difficulte;
 	private Duration duree;
@@ -98,4 +98,61 @@ public class Activite {
 				"Durée: " + this.duree.toMinutes() + " minutes" + "\n" +
 				"Distance: " + this.distanceParcouru + " km" + "\n";
 	}
+
+   /**
+    * Fonction qui compare deux activités sur les critères suivant (dans cet ordre)
+    * début > durée > disatance parcouru > difficulte > categorie.
+    * 
+    * @param activite L'activité que l'on souhaite comparer.
+    * @return Trois valeurs possibles -1 pour plus petits, 0 pour égal et 1 pour supérieur.
+    */
+	@Override
+	public int compareTo(Activite activite) {
+	   if(this.equals(activite)) {
+		   return 0;
+	   } else {
+		   if(! this.debut.equals(activite.getDebut())) {
+			   return this.debut.compareTo(activite.getDebut());
+		   } else if(! this.duree.equals(activite.getDuree())) {
+			   return this.duree.compareTo(activite.getDuree());
+		   } else if(this.distanceParcouru != activite.getDistanceParcouru()) {
+			   if(this.distanceParcouru < activite.getDistanceParcouru()) {
+				   return -1;
+			   } else {
+				   return 1;
+			   }
+		   } else if(!this.difficulte.equals(activite.getDifficulte())) {
+			   return this.difficulte.compareTo(activite.getDifficulte());
+		   } else {
+			   return this.categorie.compareTo(activite.getCategorie());
+		   }
+	   }
+	}
+	
+    /**
+     * Vérifier si deux activités sont égales, on se base sur les attributs
+     * pour déterminer s'ils sont égaux ou non.
+     * @param objet L'objet que l'on souhaite comparer.
+     * @return true si égal, false sinon.
+     */
+    @Override
+   public boolean equals(Object objet) {
+    	if(objet == this) {
+    		//Les deux objets ont la même référence, se sont les mêmes.
+    		return true;
+    		
+    	} else if(objet instanceof Activite) {
+    		//L'objet est un employé, se sont les même s'ils ont le même nom, prénom et date d'embauche.
+    		Activite activite = (Activite) objet;
+    		
+    		return (this.debut.equals(activite.getDebut()) && 
+    				this.difficulte.equals(activite.getDifficulte()) && 
+    				this.duree.equals(activite.getDuree()) &&
+    				this.categorie.equals(activite.getCategorie()) &&
+    				this.distanceParcouru == activite.getDistanceParcouru());
+    	} else {
+    		//L'objet n'est pas un employé, ils sont différents.
+    		return false;
+    	}
+   }
 }

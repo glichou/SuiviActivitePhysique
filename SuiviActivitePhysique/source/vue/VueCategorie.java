@@ -1,13 +1,9 @@
 package vue;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import controleur.ControleurCategorie;
-import modele.Activite;
 import modele.Categorie;
+import utilitaire.Clavier;
 
 /**
  * Vue de la Catégorie.
@@ -15,14 +11,14 @@ import modele.Categorie;
  */
 public class VueCategorie{
 	private ControleurCategorie controleur;	
-	private Scanner clavier;
+	private Clavier clavier;
 	
 	/**
 	 * Constructeur de la classe de VueCategorie.
 	 */
 	public VueCategorie() {
 		//Créer un objet pour récupérer le texte saisit.
-		clavier = new Scanner(System.in);
+		clavier = new Clavier(System.in);
 	}
 
 	/**
@@ -38,51 +34,30 @@ public class VueCategorie{
 	 * @return La catégorie sélectionné par l'utilisateur.
 	 */
 	public Categorie selectionnerCategorie() {
-		Categorie categorie = null;
-		
-		boolean valide = false;
-		int numeroSaisi;
+		int index;
 		
 		do {
+			System.out.println("Catégorie :");
+			
 			//Récupérer les catégories.
 			ArrayList<Categorie> liste = this.controleur.recupererCategories();
 			
-			//Afficher et numéroter les catégories.
-			int compteur = 1;
-			System.out.println("Catégorie :");
-			for(Categorie element : liste){
-				System.out.println("  " + compteur + "] " + element.getLibelle());
-				compteur++;
+			//Lister les catégories existantes et l'option permettant l'ajout d'une nouvelle.
+			for(index = 0; index < liste.size(); index++){
+				System.out.println("  " + (index + 1) + "] " + liste.get(index).toSmallString());
 			}
+			System.out.println("  " + (index + 1) + "] Nouveau…");
 			
-			//Ajouter une option à la liste pour créer une nouvelle catégorie.
-			System.out.println("  " + compteur + "] Nouveau...");
-			
-			//Afficher le message de demande.
+			//Récupérer l'option selectionné par l'utilisateur.
 			System.out.print("\nSélectionnez le numéro souhaité : ");
+			int numero = clavier.recupererNombre(1, (index + 1));
 			
-			//Vérifier que le valeur est au bon format.
-			if(clavier.hasNextInt()) {
-				numeroSaisi = clavier.nextInt();
-				
-				//Vérifier que le numéro est valide.
-				if(numeroSaisi > 0 && numeroSaisi <= compteur) {
-					
-					if(numeroSaisi != compteur) {
-						int index = numeroSaisi - 1;
-						categorie = liste.get(index);
-						valide = true;
-					} else {
-						ajouterUneCategorie();
-					}
-				} else {
-					System.out.println("Option non valide.");
-				}
+			if(numero == (index + 1)) {
+				ajouterUneCategorie();
 			} else {
-				System.out.println("La valeur saisie n'est pas valide.");
+				return liste.get(numero - 1);
 			}
-		} while(!valide);
-		return categorie;
+		} while(true);
 	}
 	
 	/**
@@ -92,36 +67,17 @@ public class VueCategorie{
 	private void ajouterUneCategorie() {
 		boolean valide = false;
 		String chaine;
-
-		System.out.print("Nom de la catégorie à ajouter : ");
-		clavier.nextLine();
-		do {
-			//Récupérer la valeur saisie.
-			chaine = clavier.nextLine().trim();
-			
-			//Vérifier la valeur saisie.
-			if(chaine.length() < 1 ) {
-				System.out.print("Veuillez saisir un nom de catégorie valide : ");
-			} else {
-				ArrayList<Categorie> liste = this.controleur.recupererCategories();
-				
-				//Vérifier si la catégorie existe déjà.
-				boolean existe = false;
-				for(Categorie element : liste){
-					if(element.getLibelle().equals(chaine)) {
-						existe = true;
-					}
-				}
 		
-				if(existe) {
-					//Annuler la création si elle existe.
-					System.out.println("La catégorie existe déjà.");
-					valide = true;
-				} else {
-					//Ajouter la categorie.
-					this.controleur.ajouterCategorie(chaine);
-					valide = true;
-				}
+		System.out.print("Nom de la catégorie à ajouter : ");
+		do {
+			chaine  = clavier.recupererTexteCourt(false, true);
+
+			Categorie categorie = new Categorie(chaine);
+			
+			if(this.controleur.ajouterCategorie(categorie)) {
+				valide = true;
+			} else {
+				System.out.print("La catégorie existe déjà ! Nom de la catégorie à ajouter : ");
 			}
 		} while(!valide);
 	}
