@@ -13,8 +13,8 @@ import vue.VueCategorie;
 import vue.VueFavoris;
 
 /**
- * Classe controleur
- * @author
+ * Classe controleurFavoris
+ * @author quent
  */
 public class ControleurFavoris {
 	private ModeleApplication modele;
@@ -40,11 +40,25 @@ public class ControleurFavoris {
 	}
 	
 	
+	/**
+	 * Ajouter un favori dans le profil de l'utilisateur.
+	 * @param titre 	; C'est le titre du favori.
+	 * @param lien 	 	; C'est le lien du favori.
+	 * @param duree 	; C'est la durée du favori.
+	 * @param categorie ; C'est la catégorie du favori.
+	 * @param memo 		; C'est le mémo du favori.
+	 */	
 	public void ajouterUnFavori(String titre, String lien, Duration duree, Categorie categorie, String memo) {
 		Favoris favoris = new Favoris(titre, lien, duree, categorie, memo);
 		this.modele.ajouterUnFavori(favoris);
 	}
-	
+
+	/**
+	 * Afficher la vue permettant à l'utilisateur de 
+	 * sélectionner la catégorie voulue ou d'en créer
+	 * une nouvelle.
+	 * @return La catégorie sélectionnée.
+	 */	
 	public Categorie afficherSelectionCategorie() {
 		VueCategorie vCategorie = new VueCategorie();
 		ControleurCategorie cCategorie = new ControleurCategorie(this.modele, vCategorie);

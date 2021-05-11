@@ -9,20 +9,34 @@ import modele.Difficulte;
 import modele.Favoris;
 import utilitaire.Clavier;
 
-
+	/**
+	* Classe vueFavoris
+	* @author quent
+	*/
 public class VueFavoris {
 	private ControleurFavoris controleur;
 	private Clavier clavier;
 	
-	
+	/**
+	* Constructeur de la classe de VueFavoris.
+	*/
 	public VueFavoris() {
 		clavier = new Clavier(System.in);
 	}
-
+	
+	
+	/**
+	* Définir le contrôleur de cette vue.
+	* @param controleur Le controleur de la vue.
+	*/
 	public void setControleur(ControleurFavoris controleur) {
 		this.controleur = controleur;
 	}
 	
+	
+	 /**
+	 * Afficher le menu principal de sélection des options pour les favoris.
+	 */
 	public void afficherMenu() {
 		int numeroSaisi;
 		do {
@@ -34,10 +48,15 @@ public class VueFavoris {
 			System.out.println("5] Revenir à l'accueil");
 			System.out.print("\nSaisir l'option voulue: ");
 			
+<<<<<<< HEAD
 			numeroSaisi = clavier.recupererNombre(1, 5);
+=======
+			//Récupérer la valeur saisie par l'utilisateur.
+			numeroSaisi = clavier.recupererNombre(1, 4);
+>>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
 			System.out.println();
 
-			//Executer l'action demandé par l'utilisateur.
+			//Executer l'action demandée par l'utilisateur.
 			switch(numeroSaisi) {
 				case 1:
 					this.afficherLesFavoris();
@@ -55,19 +74,37 @@ public class VueFavoris {
 		} while(numeroSaisi != 5);
 	}
 	
+<<<<<<< HEAD
 	private void supprimerUnFavori() {		
+=======
+	/**
+	 * Afficher l'ensemble des activités de l'utilisateurs.
+	 */	
+	public void afficherUnFavori() {
+		//Récupérer l'ensembles des favoris de l'utilisateur.
+		ArrayList<Favoris> liste = this.controleur.recupererFavoris();
+		
+		//Demander l'identifiant des favoris si la liste n'est pas vide.
+>>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
 		int index = 0;
 		if(this.controleur.recupererNbFavoris() > 0) {
 			
 			System.out.print("Veuillez saisir l'identifiant du favori : ");
 			index = clavier.recupererNombre(1, this.controleur.recupererNbFavoris());
 			
+<<<<<<< HEAD
 			try {
 				this.controleur.supprimerFavoris(index - 1);
 				System.out.println("Le favoris selectionné a bien été supprimé !");
 			} catch (Exception e) {
 				System.out.println("Le favoris selectionné n'existe pas !");
 			}
+=======
+			Favoris favoris = liste.get(index - 1);
+			
+			//Afficher les informations sur le favori.
+			System.out.println(favoris);
+>>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
 			
 		} else {
 			System.out.println("→ Vous n'avez encore aucun favori pour le moment !");
@@ -93,21 +130,33 @@ public class VueFavoris {
 	}
 	
 	
+	//Afficher l'ensemble des favoris de l'utilisateurs.
 	public void afficherLesFavoris() {
+		
+		//Récupérer les favoris dans le profil de l'utilisateur.
 		ArrayList<Favoris> liste = this.controleur.recupererFavoris();
 		
+		//Lister tous les favoris de l'utilisateur avec un identifiant s'il y en a.
 		if(liste.size() > 0) {
 			System.out.println("Voici la liste de vos favoris :");
 			for(int i = 0; i < liste.size(); i++) {
 				System.out.println((i + 1) + "] " + liste.get(i).toSmallString());
 			}
 		} else {
+			//Afficher un message car il n'y a pas de favoris dans la liste.
 			System.out.println("→ Vous n'avez encore aucun favoris pour le moment !");
 		}
 		System.out.println();
 	}
+<<<<<<< HEAD
 
 	
+=======
+	
+	
+
+	 // Récupérer les informations pour ajouter un favori dans le profil de l'utilisateur.
+>>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
 	public void ajouterUnFavori() {
 		System.out.println(" [AJOUT D'UN FAVORI]\n");
 		System.out.print("Titre: ");
@@ -125,6 +174,7 @@ public class VueFavoris {
 		System.out.println("Mémo: ");
 		String memo = clavier.recupererTexteLong();
 		
+		// Ajoute le favori
 		this.controleur.ajouterUnFavori(titre, lien, duree, categorie, memo);
 	}
 }

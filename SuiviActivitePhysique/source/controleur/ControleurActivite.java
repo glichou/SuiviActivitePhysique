@@ -40,11 +40,11 @@ public class ControleurActivite {
 	
 	/**
 	 * Ajouter une activité dans le profil de l'utilisateur.
-	 * @param date La date de début de l'activité.
-	 * @param difficulte La difficulté de l'activité.
-	 * @param duree La durée de l'activité.
-	 * @param distance La distance parcourue lors de l'activité.
-	 * @param categorie La catégorie de l'activité.
+	 * @param date 			; La date de début de l'activité.
+	 * @param difficulte 	; La difficulté de l'activité.
+	 * @param duree 		; La durée de l'activité.
+	 * @param distance 		; La distance parcourue lors de l'activité.
+	 * @param categorie 	; La catégorie de l'activité.
 	 */
 	public void ajouterUneActivite(LocalDateTime date, Difficulte difficulte, Duration duree, long distance, Categorie categorie) {
 		Activite activite = new Activite(date, difficulte, duree, distance, categorie);

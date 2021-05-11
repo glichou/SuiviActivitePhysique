@@ -22,10 +22,10 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	
 	/**
 	 * Constructeur de l'objet Favoris.
-	 * @param lien Le lien vers la video.
-	 * @param duree La durée approximative de l'entrainement.
-	 * @param categorie La catégorie de l'entrainement.
-	 * @param memo Un mémo définit par l'utilisateur.
+	 * @param lien 			; Le lien vers la video.
+	 * @param duree 		; La durée approximative de l'entrainement.
+	 * @param categorie 	; La catégorie de l'entrainement.
+	 * @param memo 			; Un mémo défini par l'utilisateur.
 	 */
 	public Favoris(String titre, String lien, Duration duree, Categorie categorie, String memo) {
 		this.titre = titre;
@@ -37,7 +37,7 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	}
 	
 	/**
-	 * Récupérer un extrait des informations sur le Favoris
+	 * Récupérer un extrait des informations sur le Favori
 	 * @return La chaine de caractères.
 	 */
 	public String toSmallString() {
@@ -45,7 +45,7 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	}
 	
 	/**
-	 * Récupérer les informations sur le Favoris
+	 * Récupérer les informations sur le Favori
 	 * @return La chaine de caractères.
 	 */
 	public String toString() {
@@ -62,7 +62,7 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	}
 	
 	/**
-	 * Récupérer le nom de domaine de l'URL du favoris.
+	 * Récupérer le nom de domaine de l'URL du favori.
 	 * @return Une chaine contenant le domaine.
 	 */
 	public String recupererDomaineLien() {
@@ -137,8 +137,8 @@ public class Favoris implements Serializable, Comparable<Favoris> {
    }
 	
 	/**
-	 * Récupérer la date de création du favoris.
-	 * @return La date de création du favoris
+	 * Récupérer la date de création du favori.
+	 * @return La date de création du favori
 	 */
 	public LocalDateTime getDateCreation() {
 		return this.dateCreation;
@@ -146,23 +146,23 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 
 
 	/**
-	 * Récupérer le titre du favoris.
-	 * @return Le titre du favoris.
+	 * Récupérer le titre du favori.
+	 * @return Le titre du favori.
 	 */
 	public String getTitre() {
 		return this.titre;
 	}
 
 	/**
-	 * Récupérer le mémo contenu dans le favoris.
-	 * @return Le mémo du favoris.
+	 * Récupérer le mémo contenu dans le favori.
+	 * @return Le mémo du favori.
 	 */
 	public String getMemo() {
 		return this.memo;
 	}
 
 	/**
-	 * Récupérer la durée approximative de l'entrainement définit dans le favoris.
+	 * Récupérer la durée approximative de l'entrainement définit dans le favori.
 	 * @return La durée approximative de l'entrainement.
 	 */
 	public Duration getDuree() {
@@ -178,8 +178,8 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	}
 	
 	/**
-	 * Récupérer la catégorie du favoris.
-	 * @return La catégorie du favoris.
+	 * Récupérer la catégorie du favori.
+	 * @return La catégorie du favori.
 	 */
 	public Categorie getCategorie() {
 		return this.categorie;
