@@ -5,14 +5,13 @@ import java.util.ArrayList;
 
 import controleur.ControleurFavoris;
 import modele.Categorie;
-import modele.Difficulte;
 import modele.Favoris;
 import utilitaire.Clavier;
 
-	/**
-	* Classe vueFavoris
-	* @author quent
-	*/
+/**
+* Classe vueFavoris
+* @author quent
+*/
 public class VueFavoris {
 	private ControleurFavoris controleur;
 	private Clavier clavier;
@@ -24,7 +23,6 @@ public class VueFavoris {
 		clavier = new Clavier(System.in);
 	}
 	
-	
 	/**
 	* Définir le contrôleur de cette vue.
 	* @param controleur Le controleur de la vue.
@@ -33,10 +31,9 @@ public class VueFavoris {
 		this.controleur = controleur;
 	}
 	
-	
-	 /**
-	 * Afficher le menu principal de sélection des options pour les favoris.
-	 */
+	/**
+	* Afficher le menu principal de sélection des options pour les favoris.
+	*/
 	public void afficherMenu() {
 		int numeroSaisi;
 		do {
@@ -48,15 +45,10 @@ public class VueFavoris {
 			System.out.println("5] Revenir à l'accueil");
 			System.out.print("\nSaisir l'option voulue: ");
 			
-<<<<<<< HEAD
 			numeroSaisi = clavier.recupererNombre(1, 5);
-=======
-			//Récupérer la valeur saisie par l'utilisateur.
-			numeroSaisi = clavier.recupererNombre(1, 4);
->>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
 			System.out.println();
-
-			//Executer l'action demandée par l'utilisateur.
+	
+			//Executer l'action demandé par l'utilisateur.
 			switch(numeroSaisi) {
 				case 1:
 					this.afficherLesFavoris();
@@ -74,49 +66,35 @@ public class VueFavoris {
 		} while(numeroSaisi != 5);
 	}
 	
-<<<<<<< HEAD
-	private void supprimerUnFavori() {		
-=======
 	/**
-	 * Afficher l'ensemble des activités de l'utilisateurs.
-	 */	
-	public void afficherUnFavori() {
-		//Récupérer l'ensembles des favoris de l'utilisateur.
-		ArrayList<Favoris> liste = this.controleur.recupererFavoris();
-		
-		//Demander l'identifiant des favoris si la liste n'est pas vide.
->>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
+	 * Afficher le menu permettant de supprimer un favoris
+	 */
+	public void supprimerUnFavori() {		
 		int index = 0;
 		if(this.controleur.recupererNbFavoris() > 0) {
 			
 			System.out.print("Veuillez saisir l'identifiant du favori : ");
 			index = clavier.recupererNombre(1, this.controleur.recupererNbFavoris());
 			
-<<<<<<< HEAD
 			try {
 				this.controleur.supprimerFavoris(index - 1);
 				System.out.println("Le favoris selectionné a bien été supprimé !");
 			} catch (Exception e) {
 				System.out.println("Le favoris selectionné n'existe pas !");
 			}
-=======
-			Favoris favoris = liste.get(index - 1);
-			
-			//Afficher les informations sur le favori.
-			System.out.println(favoris);
->>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
 			
 		} else {
 			System.out.println("→ Vous n'avez encore aucun favori pour le moment !");
 		}
 		System.out.println();
 	}
-
+	
 	public void afficherUnFavori() {
 		int index = 0;
 		if(this.controleur.recupererNbFavoris() > 0) {
 			System.out.print("Veuillez saisir l'identifiant du favori : ");
 			
+			//Demander l'identifiant des favoris si la liste n'est pas vide.
 			index = clavier.recupererNombre(1, this.controleur.recupererNbFavoris());
 			try {
 				System.out.println(this.controleur.recupererFavoris(index - 1));
@@ -129,10 +107,10 @@ public class VueFavoris {
 		System.out.println();
 	}
 	
-	
-	//Afficher l'ensemble des favoris de l'utilisateurs.
+	/**
+	 * Afficher l'ensemble des activités de l'utilisateurs.
+	 */	
 	public void afficherLesFavoris() {
-		
 		//Récupérer les favoris dans le profil de l'utilisateur.
 		ArrayList<Favoris> liste = this.controleur.recupererFavoris();
 		
@@ -148,23 +126,16 @@ public class VueFavoris {
 		}
 		System.out.println();
 	}
-<<<<<<< HEAD
-
 	
-=======
-	
-	
-
-	 // Récupérer les informations pour ajouter un favori dans le profil de l'utilisateur.
->>>>>>> branch 'main' of https://github.com/glichou/SuiviActivitePhysique.git
+	// Récupérer les informations pour ajouter un favori dans le profil de l'utilisateur.
 	public void ajouterUnFavori() {
 		System.out.println(" [AJOUT D'UN FAVORI]\n");
+		
 		System.out.print("Titre: ");
 		String titre = clavier.recupererTexteCourt(true, true);
 		
 		System.out.print("URL: ");
 		String lien = clavier.recupererURL();
-		
 		
 		System.out.print("Durée (en minutes): ");
 		Duration duree = clavier.recupererDuree(0, 2880);
