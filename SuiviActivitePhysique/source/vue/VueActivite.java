@@ -104,7 +104,7 @@ public class VueActivite {
 		//Récupérer l'ensembles des activités de l'utilisateur.
 		ArrayList<Activite> liste = this.controleur.recupererActivites();
 		
-		//Demander l'identifiant de l'activité si la lise n'est pas vide.
+		//Demander l'identifiant de l'activité si la liste n'est pas vide.
 		int index = 0;
 		if(liste.size() > 0) {
 			System.out.print("Veuillez saisir l'identifiant de l'activité : ");
