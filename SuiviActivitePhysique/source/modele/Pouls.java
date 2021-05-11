@@ -1,7 +1,6 @@
 package modele;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 /**
  * Représentation d'une mesure de pouls

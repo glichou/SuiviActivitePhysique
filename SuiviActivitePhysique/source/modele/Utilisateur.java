@@ -1,5 +1,6 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @author lichou
  * @version 0.1
  */
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 	private String nom;
 	private String prenom;
 	private int taille;
@@ -113,6 +114,14 @@ public class Utilisateur {
 	 */
 	public String getPrenom() {
 		return this.prenom;
+	}
+	
+	/**
+	 * Récupérer le nom de l'utilisateur.
+	 * @return Le prénom de l'utilisateur.
+	 */
+	public String getNom() {
+		return this.nom;
 	}
 
 	/**

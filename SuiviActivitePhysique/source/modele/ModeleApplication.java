@@ -19,6 +19,14 @@ public class ModeleApplication {
 	}
 	
 	/**
+	 * Définir l'utilisateur de l'application.
+	 * @param utilisateur L'utilisateur de l'application.
+	 */
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	
+	/**
 	 * Récupérer l'utilisateur de l'application.
 	 * @return L'utilisateur de l'application.
 	 */

@@ -1,5 +1,6 @@
 package modele;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
  * @author lichou
  * @version 0.1
  */
-public class Favoris implements Comparable<Favoris> {
+public class Favoris implements Serializable, Comparable<Favoris> {
 	private LocalDateTime dateCreation;
 	private String titre;
 	private String lien;

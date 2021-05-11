@@ -37,6 +37,30 @@ public class ControleurApplication {
 	}
 
 	/**
+	 * Vérifier si un utilisateur est connecté.
+	 * @return true si connecté, false sinon.
+	 */
+	public boolean utilisateurConnecte() {
+		return (this.modele.getUtilisateur() != null);
+	}
+
+	/**
+	 * Récupérer le nom de l'utilisateur.
+	 * @return Le nom de l'utilisateur.
+	 */
+	public String recupererNomUtilisateur() {
+		return this.modele.getUtilisateur().getNom();
+	}
+	
+	/**
+	 * Récupérer le prénom de l'utilisateur.
+	 * @return Le nom de l'utilisateur.
+	 */
+	public String recupererPrenomUtilisateur() {
+		return this.modele.getUtilisateur().getPrenom();
+	}
+	
+	/**
 	 * Passer à la vue de l'activité.
 	 */
 	public void afficherMenuActivite() {

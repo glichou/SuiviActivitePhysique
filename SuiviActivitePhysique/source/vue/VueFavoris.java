@@ -25,7 +25,6 @@ public class VueFavoris {
 	
 	public void afficherMenu() {
 		int numeroSaisi;
-		Clavier.effacerEcran();
 		do {
 			System.out.println("\t[FAVORIS]\n");
 			System.out.println("1] Afficher les favoris");

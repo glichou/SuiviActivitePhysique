@@ -1,5 +1,6 @@
 package modele;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
@@ -7,7 +8,7 @@ import java.time.ZoneId;
  * Représentation abstraite d'une Mesure.
  * @author lichou
  */
-public abstract class Mesure {
+public abstract class Mesure implements Serializable {
 	private LocalDateTime date;
 	
 	/**

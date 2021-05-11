@@ -1,11 +1,13 @@
 package modele;
 
+import java.io.Serializable;
+
 /**
  * Représentation d'une catégorie.
  * @author lichou
  * @version 0.1
  */
-public class Categorie implements Comparable<Categorie>{
+public class Categorie implements Serializable, Comparable<Categorie>{
 	private String libelle;
 	
 	/**

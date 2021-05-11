@@ -41,18 +41,17 @@ public class Clavier {
 		boolean valide = false;
 		
 		while(!valide) {
-			while(!clavier.hasNextInt()) {
-				System.out.print("Veuillez saisir un nombre : ");
-				clavier.next();
-			} 
-			
-			numero = clavier.nextInt();
-			if(numero >= min && numero <= max) {
-				valide = true;
-				clavier.nextLine();
-			} else {
-				System.out.print("Veuillez saisir un nombre compris entre " + min + " et " + max + " : ");
-			}
+			try {
+				numero = Integer.parseInt(clavier.nextLine());
+				
+				if(numero >= min && numero <= max) {
+					valide = true;
+				} else {
+					System.out.print("Veuillez saisir un nombre compris entre " + min + " et " + max + " : ");
+				}
+		    } catch (NumberFormatException exception) {
+		    	System.out.print("Veuillez saisir un nombre : ");
+		    }		
 		}
 		return numero;
 	}
@@ -69,20 +68,19 @@ public class Clavier {
 		boolean valide = false;
 		
 		while(!valide) {
-			while(!clavier.hasNextDouble()) {
-				System.out.print("Veuillez saisir un nombre décimal : ");
-				clavier.next();
-			}
-			
-			nombre = clavier.nextDouble();
-			
-			if(nombre >= min && nombre <= max) {
-				valide = true;
-				clavier.nextLine();
-			} else {
-				System.out.print("Veuillez saisir un nombre décimal compris entre " + min + " et " + max + " : ");
-			}
+			try {
+				nombre = Double.parseDouble(clavier.nextLine());
+				
+				if(nombre >= min && nombre <= max) {
+					valide = true;
+				} else {
+					System.out.print("Veuillez saisir un nombre décimal compris entre " + min + " et " + max + " : ");
+				}
+		    } catch (NumberFormatException exception) {
+		    	System.out.print("Veuillez saisir un nombre décimal : ");
+		    }		
 		}
+		
 		return nombre;
 	}
 	
@@ -98,18 +96,17 @@ public class Clavier {
 		boolean valide = false;
 		
 		while(!valide) {
-			while(!clavier.hasNextLong()) {
-				System.out.print("Veuillez saisir un nombre entier : ");
-				clavier.next();
-			}
-
-			nombre = clavier.nextLong();			
-			if(nombre >= min && nombre <= max) {
-				valide = true;
-				clavier.nextLine();
-			} else {
-				System.out.print("Veuillez saisir un nombre entier compris entre " + min + " et " + max + " : ");
-			}
+			try {
+				nombre = Long.parseLong(clavier.nextLine());
+				
+				if(nombre >= min && nombre <= max) {
+					valide = true;
+				} else {
+					System.out.print("Veuillez saisir un nombre entier compris entre " + min + " et " + max + " : ");
+				}
+		    } catch (NumberFormatException exception) {
+		    	System.out.print("Veuillez saisir un nombre entier : ");
+		    }
 		}
 		return nombre;
 	}
@@ -128,20 +125,19 @@ public class Clavier {
 		boolean valide = false;
 		long nombre;
 		
-		while(!valide) {			
-			while(!clavier.hasNextLong()) {
-				System.out.print("Veuillez saisir un nombre : ");
-				clavier.next();
-			} 
-			
-			nombre = clavier.nextLong();
-			if(nombre >= min && nombre <= max) {
-				duree = Duration.ofMinutes(nombre);
-				valide = true;
-				clavier.nextLine();
-			} else {
-				System.out.print("Veuillez saisir un nombre compris entre " + min + " et " + max + " : ");
-			}
+		while(!valide) {
+			try {
+				nombre = Long.parseLong(clavier.nextLine());
+				
+				if(nombre >= min && nombre <= max) {
+					duree = Duration.ofMinutes(nombre);
+					valide = true;
+				} else {
+					System.out.print("Veuillez saisir un nombre compris entre " + min + " et " + max + " : ");
+				}
+		    } catch (NumberFormatException exception) {
+		    	System.out.print("Veuillez saisir un nombre entier : ");
+		    }
 		}
 		return duree;
 	}
@@ -234,15 +230,6 @@ public class Clavier {
 			}
 		}
 		return chaine;
-	}
-	
-	
-	public Pouls recupererMesurePouls() {
-		Pouls mesure = null;
-		
-		
-		
-		return mesure;
 	}
 	
 	/**

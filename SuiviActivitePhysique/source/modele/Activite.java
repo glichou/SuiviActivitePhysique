@@ -1,5 +1,6 @@
 package modele;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -9,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * @author lichou
  * @version 0.1
  */
-public class Activite implements Comparable<Activite> {
+public class Activite implements Serializable, Comparable<Activite> {
 	private LocalDateTime debut;
 	private Difficulte difficulte;
 	private Duration duree;

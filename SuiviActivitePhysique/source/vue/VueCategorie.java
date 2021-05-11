@@ -9,7 +9,7 @@ import utilitaire.Clavier;
  * Vue de la Catégorie.
  * @author lichou
  */
-public class VueCategorie{
+public class VueCategorie {
 	private ControleurCategorie controleur;	
 	private Clavier clavier;
 	

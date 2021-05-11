@@ -36,8 +36,7 @@ public class VueApplication {
 		afficherLogo();
 		
 		//Initialiser l'application.
-		//this.premierDemarrage();
-		this.controleur.creerCompte("Bernard", "Connard", 121, 60);
+		this.premierDemarrage();
 		
 		int numeroSaisi;
 		
@@ -87,18 +86,21 @@ public class VueApplication {
 	 * permettant de compléter le profil de l'utilisateur.
 	 */
 	public void premierDemarrage() {
-		System.out.println("\n\nDans cette application vous allez pouvoir suivre votre activité physique et votre\nprogession au fil du temps. Allez, hop hop hop, ne perdons pas de temps,\ncommencons par renseigner les informations de votre profil avant de commencer.\n");
-		System.out.println("\t[PROFIL UTILISATEUR]\n");
-		System.out.print("Prénom: ");
-		String prenom = clavier.recupererTexteCourt(false, true);
-		System.out.print("Nom: ");
-		String nom = clavier.recupererTexteCourt(false, true);
-		System.out.print("Taille (en cm): ");
-		int taille = clavier.recupererNombre(50, 300);
-		System.out.print("Poids (en kg): ");
-		double poids = clavier.recupererNombreDecimal(10.0, 600.0);
-		System.out.println();
-		
-		this.controleur.creerCompte(prenom, nom, taille, poids);
+		if(!this.controleur.utilisateurConnecte()) {
+			System.out.println("\n\nDans cette application vous allez pouvoir suivre votre activité physique et votre\nprogession au fil du temps. Allez, hop hop hop, ne perdons pas de temps,\ncommencons par renseigner les informations de votre profil avant de commencer.\n");
+			System.out.println("\t[PROFIL UTILISATEUR]\n");
+			System.out.print("Prénom: ");
+			String prenom = clavier.recupererTexteCourt(false, true);
+			System.out.print("Nom: ");
+			String nom = clavier.recupererTexteCourt(false, true);
+			System.out.print("Taille (en cm): ");
+			int taille = clavier.recupererNombre(50, 300);
+			System.out.print("Poids (en kg): ");
+			double poids = clavier.recupererNombreDecimal(10.0, 600.0);
+			System.out.println();
+			this.controleur.creerCompte(prenom, nom, taille, poids);
+		} else {
+			System.out.println("Bienvenue " + this.controleur.recupererPrenomUtilisateur() + " " + this.controleur.recupererNomUtilisateur() + " !\n");
+		}
 	}
 }
