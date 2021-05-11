@@ -45,11 +45,12 @@ public class VueApplication {
 			System.out.println("\t[ACCUEIL]\n");
 			System.out.println("1] Activité");
 			System.out.println("2] Favoris");
-			System.out.println("3] QUITTER");
+			System.out.println("3] Catégories");
+			System.out.println("4] QUITTER");
 			System.out.print("\nVeuillez choisir une option: ");
 			
 			//Récupérer la valeur saisie par l'utilisateur.
-			numeroSaisi = clavier.recupererNombre(1, 3);
+			numeroSaisi = clavier.recupererNombre(1, 4);
 			System.out.println();
 			
 			// Executer l'action demandé par l'utilisateur.
@@ -60,8 +61,11 @@ public class VueApplication {
 				case 2:
 					controleur.afficherMenuFavori();
 					break;
+				case 3:
+					controleur.afficherMenuCategorie();
+					break;
 			}
-		} while(numeroSaisi != 3);
+		} while(numeroSaisi != 4);
 		
 		//Parceque... pourquoi pas ?! 
 		afficherLogo();

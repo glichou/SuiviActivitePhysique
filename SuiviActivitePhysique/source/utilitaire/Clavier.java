@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import modele.Difficulte;
 import modele.Pouls;
 
 /**
@@ -111,6 +112,65 @@ public class Clavier {
 		return nombre;
 	}
 	
+	
+	/**
+	 * Récupérer une difficulté saisit par l'utilisateur comprit
+	 * entre une valeur minimum et maximum.
+	 * @return Un nombre saisit par l'utilisateur.
+	 */
+	public Difficulte recupererDifficulte() {
+		short nombre = 0;
+		boolean valide = false;
+		Difficulte difficulte = null;
+		
+		while(!valide) {
+			try {
+				nombre = Short.parseShort(clavier.nextLine());
+				
+				if(nombre >= 1 && nombre <= 10) {
+					
+					switch(nombre) {
+						case 1:
+							difficulte = new Difficulte(Difficulte.Niveau.UN);
+							break;
+						case 2:
+							difficulte = new Difficulte(Difficulte.Niveau.DEUX);
+							break;
+						case 3:
+							difficulte = new Difficulte(Difficulte.Niveau.TROIS);
+							break;
+						case 4:
+							difficulte = new Difficulte(Difficulte.Niveau.QUATRE);
+							break;
+						case 5:
+							difficulte = new Difficulte(Difficulte.Niveau.CINQ);
+							break;
+						case 6:
+							difficulte = new Difficulte(Difficulte.Niveau.SIX);
+							break;
+						case 7:
+							difficulte = new Difficulte(Difficulte.Niveau.SEPT);
+							break;
+						case 8:
+							difficulte = new Difficulte(Difficulte.Niveau.HUIT);
+							break;
+						case 9:
+							difficulte = new Difficulte(Difficulte.Niveau.NEUF);
+							break;
+						case 10:
+							difficulte = new Difficulte(Difficulte.Niveau.DIX);
+							break;
+					}
+					valide = true;
+				} else {
+					System.out.print("Veuillez saisir un nombre entier compris entre 1 et 10 : ");
+				}
+		    } catch (NumberFormatException exception) {
+		    	System.out.print("Veuillez saisir un nombre entier : ");
+		    }
+		}
+		return difficulte;
+	}
 	
 	
 	/**

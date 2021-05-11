@@ -3,6 +3,7 @@ package controleur;
 import modele.ModeleApplication;
 import vue.VueActivite;
 import vue.VueApplication;
+import vue.VueCategorie;
 import vue.VueFavoris;
 
 /**
@@ -68,11 +69,23 @@ public class ControleurApplication {
 		ControleurActivite cActivite = new ControleurActivite(this.modele, vActivite);
 		vActivite.afficherMenu();
 	}
-
+	
+	/**
+	 * Passer à la vue des favoris.
+	 */
 	public void afficherMenuFavori() {
 		VueFavoris vFavori = new VueFavoris();
 		ControleurFavoris cFavori = new ControleurFavoris(this.modele, vFavori);
 		vFavori.afficherMenu();
 	
+	}
+
+	/**
+	 * Passer à la vue des catégories.
+	 */
+	public void afficherMenuCategorie() {
+		VueCategorie vCategorie = new VueCategorie();
+		ControleurCategorie cFavori = new ControleurCategorie(this.modele, vCategorie);
+		vCategorie.afficherMenu();	
 	}
 }

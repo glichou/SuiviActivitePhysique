@@ -85,6 +85,15 @@ public class Utilisateur implements Serializable {
 	}
 	
 	/**
+	 * Récupérer le nombre de favoris de l'utilisateur.
+	 * @return Le nombre de favoris.
+	 */
+	public int getNbFavoris() {
+		return this.favoris.size();
+	}
+	
+	
+	/**
 	 * Récupérer les favoris de l'utilisateur.
 	 * @return Les favoris de l'utilisateur.
 	 */
@@ -181,5 +190,31 @@ public class Utilisateur implements Serializable {
 	 */
 	public boolean ajouterCategorie(Categorie categorie) {
 		return (!categorieExiste(categorie) && this.categories.add(categorie));
+	}
+
+	/**
+	 * Supprimer un favoris de la liste de l'utilisateur.
+	 * @param index L'index du favoris à supprimer.
+	 * @throws Exception Lever une exception si le favoris n'existe pas.
+	 */
+	public void supprimerFavoris(int index) throws Exception {
+		if(index >= 0 && index < this.favoris.size()) {
+			this.favoris.remove(index);
+		} else {
+			throw new Exception();
+		}
+	}
+	
+	/**
+	 * Supprimer une catégorie de la liste de l'utilisateur.
+	 * @param index L'index de la catégorie à supprimer.
+	 * @throws Exception Lever une exception si la catégorie n'existe pas.
+	 */
+	public void supprimerCategorie(int index) throws Exception {
+		if(index >= 0 && index < this.categories.size()) {
+			this.categories.remove(index);
+		} else {
+			throw new Exception();
+		}
 	}
 }

@@ -97,6 +97,7 @@ public class Activite implements Serializable, Comparable<Activite> {
 				"Date: " + this.debut.format(formatDate) + "\n" +
 				"Heure: " + this.debut.format(formatHeure) + "\n" +
 				"Durée: " + this.duree.toMinutes() + " minutes" + "\n" +
+				"Difficultée: " + this.difficulte.toString() + "\n" +
 				"Distance: " + this.distanceParcouru + " km" + "\n";
 	}
 

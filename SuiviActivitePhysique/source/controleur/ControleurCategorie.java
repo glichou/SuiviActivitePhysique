@@ -36,18 +36,28 @@ public class ControleurCategorie {
 	}
 	
 	/**
-	 * Récupérer le nombre de catégorie de l'utilisateur.
-	 * @return Le nombre de catégorie.
-	 */
-	public int getNbCategorie() {
-		return this.modele.getUtilisateur().getNbCategories();
-	}
-	
-	/**
 	 * Ajouter une catégorie dans le profil de l'utilisateur.
 	 * @param libelle Le libelle de la catégorie.
 	 */
 	public boolean ajouterCategorie(Categorie categorie) {
 		return this.modele.getUtilisateur().ajouterCategorie(categorie);
+	}
+
+	/**
+	 * Récupérer le nombre de catégories de l'utilisateur.
+	 * @return Le nombre de catégories.
+	 */
+	public int recupererNbCategories() {
+		return this.modele.getUtilisateur().getNbCategories();
+	}
+
+	/**
+	 * Supprimer une catégorie de l'utilisateur à un index.
+	 * @param index L'index de la catégorie à supprimer.
+	 * @throws Exception Lever une exception s'il n'y a pas de catégorie à cet index.
+	 */
+	public void supprimerCategorie(int index) throws Exception {
+		this.modele.getUtilisateur().supprimerCategorie(index);
+		
 	}
 }

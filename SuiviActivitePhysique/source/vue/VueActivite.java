@@ -138,12 +138,14 @@ public class VueActivite {
 		System.out.print("Distance (km): ");
 		long distance = clavier.recupererGrandNombre(1, 10000);
 		Categorie categorie = this.controleur.afficherSelectionCategorie();
+		System.out.print("Difficulté: ");
+		Difficulte difficulte = clavier.recupererDifficulte();
 		System.out.println();
 		
 		//Assembler la date et l'heure de début pour former un DateTime.
 		LocalDateTime dateDebut = date.atTime(heure);
 		
 		//Ajouter l'activité.
-		this.controleur.ajouterUneActivite(dateDebut, Difficulte.CINQ, duree, distance, categorie);
+		this.controleur.ajouterUneActivite(dateDebut, difficulte, duree, distance, categorie);
 	}
 }

@@ -30,10 +30,11 @@ public class VueFavoris {
 			System.out.println("1] Afficher les favoris");
 			System.out.println("2] Afficher un favori");
 			System.out.println("3] Ajouter un favori");
-			System.out.println("4] Revenir à l'accueil");
+			System.out.println("4] Supprimer un favori");
+			System.out.println("5] Revenir à l'accueil");
 			System.out.print("\nSaisir l'option voulue: ");
 			
-			numeroSaisi = clavier.recupererNombre(1, 4);
+			numeroSaisi = clavier.recupererNombre(1, 5);
 			System.out.println();
 
 			//Executer l'action demandé par l'utilisateur.
@@ -46,22 +47,45 @@ public class VueFavoris {
 					break;
 				case 3:
 					this.ajouterUnFavori();
+					break;	
+				case 4:
+					this.supprimerUnFavori();
 					break;
 			}
-		} while(numeroSaisi != 4);
+		} while(numeroSaisi != 5);
 	}
 	
-	public void afficherUnFavori() {
-		ArrayList<Favoris> liste = this.controleur.recupererFavoris();
-		
+	private void supprimerUnFavori() {		
 		int index = 0;
-		if(liste.size() > 0) {
+		if(this.controleur.recupererNbFavoris() > 0) {
+			
 			System.out.print("Veuillez saisir l'identifiant du favori : ");
-			index = clavier.recupererNombre(1, liste.size());
+			index = clavier.recupererNombre(1, this.controleur.recupererNbFavoris());
 			
-			Favoris favoris = liste.get(index - 1);
-			System.out.println(favoris);
+			try {
+				this.controleur.supprimerFavoris(index - 1);
+				System.out.println("Le favoris selectionné a bien été supprimé !");
+			} catch (Exception e) {
+				System.out.println("Le favoris selectionné n'existe pas !");
+			}
 			
+		} else {
+			System.out.println("→ Vous n'avez encore aucun favori pour le moment !");
+		}
+		System.out.println();
+	}
+
+	public void afficherUnFavori() {
+		int index = 0;
+		if(this.controleur.recupererNbFavoris() > 0) {
+			System.out.print("Veuillez saisir l'identifiant du favori : ");
+			
+			index = clavier.recupererNombre(1, this.controleur.recupererNbFavoris());
+			try {
+				System.out.println(this.controleur.recupererFavoris(index - 1));
+			} catch (Exception e) {
+				System.out.println("Le favoris selectionné n'existe pas !");
+			}
 		} else {
 			System.out.println("→ Vous n'avez encore aucun favori pour le moment !");
 		}
@@ -82,12 +106,10 @@ public class VueFavoris {
 		}
 		System.out.println();
 	}
-	
-	
+
 	
 	public void ajouterUnFavori() {
 		System.out.println(" [AJOUT D'UN FAVORI]\n");
-		
 		System.out.print("Titre: ");
 		String titre = clavier.recupererTexteCourt(true, true);
 		

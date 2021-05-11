@@ -50,4 +50,32 @@ public class ControleurFavoris {
 		ControleurCategorie cCategorie = new ControleurCategorie(this.modele, vCategorie);
 		return vCategorie.selectionnerCategorie();
 	}
+	
+	/**
+	 * Récuperer le nombre de favoris de l'utilisateur.
+	 * @return Le nombre de favoris.
+	 */
+	public int recupererNbFavoris() {
+		return this.modele.getUtilisateur().getNbFavoris();
+	}
+	
+	
+	/**
+	 * Récupérer un favoris de l'utilisateur.
+	 * @param index L'index du favoris à récupérer.
+	 * @return Le favoris à l'index donné.
+	 * @throws Exception
+	 */
+	public Favoris recupererFavoris(int index) throws Exception {
+		return this.modele.getUtilisateur().recupererFavoris(index);
+	}
+	
+	/**
+	 * Supprimer un favoris de l'utilisateur.
+	 * @param index L'index du favoris à supprimer.
+	 * @throws Exception Lever une exception si le favoris n'existe pas.
+	 */
+	public void supprimerFavoris(int index) throws Exception {
+		this.modele.getUtilisateur().supprimerFavoris(index);
+	}
 }
