@@ -186,7 +186,7 @@ public class VueActivite {
 		System.out.print("Heure (format HHhmm): ");
 		LocalTime heure = clavier.recupererHeure(Optional.of(LocalTime.now()));
 		System.out.print("Durée (minutes): ");
-		Duration duree = clavier.recupererDuree(1, 2880);
+		Duration duree = clavier.recupererDuree(0, 2880);
 		System.out.print("Distance (km): ");
 		long distance = clavier.recupererGrandNombre(1, 10000);
 		Categorie categorie = this.controleur.afficherSelectionCategorie();

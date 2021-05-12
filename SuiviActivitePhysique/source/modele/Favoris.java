@@ -41,7 +41,7 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	 * @return La chaine de caractères.
 	 */
 	public String toSmallString() {
-		return "[" + this.categorie.getLibelle() + "] " + this.titre + " - ˹" + this.recupererDomaineLien() + "˼";
+		return "[" + ((categorie != null)?categorie.getLibelle():"(catégorie supprimée)") + "] " + this.titre + " - ˹" + this.recupererDomaineLien() + "˼";
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 				"Heure de création: " + this.dateCreation.format(formatHeure) + "\n" + 
 				"URL: " + lien + "\n" +
 				"Durée: " + duree.toMinutes() + " minutes\n" +
-				"Categorie: " + categorie.getLibelle() + "\n" +
+				"Categorie: " + ((categorie != null)?categorie.getLibelle():"(catégorie supprimée)") + "\n" +
 				"Mémo: " + (memo.isEmpty()?"(vide)":memo);
 	}
 	

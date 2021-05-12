@@ -1,6 +1,8 @@
  package vue;
 
 import java.util.ArrayList;
+import java.util.Optional;
+
 import controleur.ControleurCategorie;
 import modele.Categorie;
 import utilitaire.Clavier;
@@ -39,11 +41,12 @@ public class VueCategorie {
 			System.out.println("\t[CATÉGORIE]\n");
 			System.out.println("1] Afficher les catégories");
 			System.out.println("2] Ajouter une catégorie");
-			System.out.println("3] Supprimer une catégorie");
-			System.out.println("4] Revenir à l'accueil");
+			System.out.println("3] Modifier une catégorie");
+			System.out.println("4] Supprimer une catégorie");
+			System.out.println("5] Revenir à l'accueil");
 			System.out.print("\nSaisir l'option voulue: ");
 			
-			numeroSaisi = clavier.recupererNombre(1, 4);
+			numeroSaisi = clavier.recupererNombre(1, 5);
 			System.out.println();
 
 			//Executer l'action demandé par l'utilisateur.
@@ -55,10 +58,13 @@ public class VueCategorie {
 					this.ajouterUneCategorie();
 					break;
 				case 3:
+					this.modifierUneCategorie();
+					break;
+				case 4:
 					this.supprimerUneCategorie();
 					break;
 			}
-		} while(numeroSaisi != 4);
+		} while(numeroSaisi != 5);
 	}
 
 	/**
@@ -143,6 +149,31 @@ public class VueCategorie {
 			try {
 				this.controleur.supprimerCategorie(index - 1);
 				System.out.println("La catégorie sélectionnée a bien été supprimée !");
+			} catch (Exception e) {
+				System.out.println("La catégorie selectionnée n'existe pas !");
+			}
+		} else {
+			System.out.println("→ Vous n'avez encore aucune catégorie pour le moment !");
+		}
+		System.out.println();
+	}
+	
+	/**
+	 * Modifier une catégorie dans le profil de l'utilisateur.
+	 */
+	public void modifierUneCategorie() {		
+		int index = 0;
+		if(this.controleur.recupererNbCategories() > 0) {
+			
+			System.out.print("Veuillez saisir l'identifiant de la catégorie : ");
+			index = clavier.recupererNombre(1, this.controleur.recupererNbCategories());
+			
+			try {
+				Categorie categorie = this.controleur.recupererCategorie(index - 1);
+				
+				System.out.print("Libellé : ");
+				String libelle  = clavier.recupererTexteCourt(false, true, Optional.of(categorie.getLibelle()));
+				categorie.setLibelle(libelle);
 			} catch (Exception e) {
 				System.out.println("La catégorie selectionnée n'existe pas !");
 			}

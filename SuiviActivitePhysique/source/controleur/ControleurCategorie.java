@@ -34,6 +34,16 @@ public class ControleurCategorie {
 	public ArrayList<Categorie> recupererCategories() {
 		return this.modele.getUtilisateur().getCategories();
 	}
+
+	/**
+	 * Récupérer l'ensemble des catégories de l'utilisateur.
+	 * @param index Les catégories de l'activités.
+	 * @return La catégorie à l'index demandé.
+	 * @throws Exception Lever une exception s'il n'y a pas de catégorie à cet index.
+	 */
+	public Categorie recupererCategorie(int index) throws Exception {
+		return this.modele.getUtilisateur().recupererCategorie(index);
+	}
 	
 	/**
 	 * Ajouter une catégorie dans le profil de l'utilisateur.

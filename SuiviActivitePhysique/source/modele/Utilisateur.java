@@ -113,7 +113,6 @@ public class Utilisateur implements Serializable {
 		return this.favoris.size();
 	}
 	
-	
 	/**
 	 * Récupérer les favoris de l'utilisateur.
 	 * @return Les favoris de l'utilisateur.

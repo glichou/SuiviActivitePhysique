@@ -9,12 +9,20 @@ import java.io.Serializable;
  */
 public class Categorie implements Serializable, Comparable<Categorie>{
 	private String libelle;
-	
+
 	/**
 	 * Constructeur de la classe Catégorie.
 	 * @param libelle Le libellé de la catégorie.
 	 */
 	public Categorie(String libelle) {
+		this.libelle = libelle;
+	}
+	
+	/**
+	 * Modifier le libéllé de la catégorie.
+	 * @param libelle Le nouveau libellé de la catégorie.
+	 */
+	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 	
@@ -54,9 +62,12 @@ public class Categorie implements Serializable, Comparable<Categorie>{
 		return this.libelle.compareToIgnoreCase(categorie.getLibelle());
 	}
 	
-	/**
-	 * 
-	 */
+    /**
+     * Vérifier si deux catégories sont identiques, on se base sur les attributs
+     * pour déterminer s'ils sont identiques ou non.
+     * @param objet L'objet que l'on souhaite comparer.
+     * @return true si égal, false sinon.
+     */
 	@Override
 	public boolean equals(Object objet) {
 		if (objet == this) {
