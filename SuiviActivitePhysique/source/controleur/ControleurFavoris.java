@@ -1,13 +1,10 @@
 package controleur;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import modele.ModeleApplication;
-import modele.Activite;
 import modele.Categorie;
-import modele.Difficulte;
 import modele.Favoris;
 import vue.VueCategorie;
 import vue.VueFavoris;
@@ -70,7 +67,7 @@ public class ControleurFavoris {
 	 * @return Le nombre de favoris.
 	 */
 	public int recupererNbFavoris() {
-		return this.modele.getUtilisateur().getNbFavoris();
+		return this.modele.getUtilisateur().recupererNbFavoris();
 	}
 	
 	

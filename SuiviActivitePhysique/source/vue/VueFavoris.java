@@ -2,6 +2,7 @@ package vue;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import controleur.ControleurFavoris;
 import modele.Categorie;
@@ -41,11 +42,12 @@ public class VueFavoris {
 			System.out.println("1] Afficher les favoris");
 			System.out.println("2] Afficher un favori");
 			System.out.println("3] Ajouter un favori");
-			System.out.println("4] Supprimer un favori");
-			System.out.println("5] Revenir à l'accueil");
+			System.out.println("4] Modifier un favori");
+			System.out.println("5] Supprimer un favori");
+			System.out.println("6] Revenir à l'accueil");
 			System.out.print("\nSaisir l'option voulue: ");
 			
-			numeroSaisi = clavier.recupererNombre(1, 5);
+			numeroSaisi = clavier.recupererNombre(1, 6);
 			System.out.println();
 	
 			//Executer l'action demandé par l'utilisateur.
@@ -58,12 +60,15 @@ public class VueFavoris {
 					break;
 				case 3:
 					this.ajouterUnFavori();
-					break;	
+					break;
 				case 4:
+					this.modifierUnFavori();
+					break;
+				case 5:
 					this.supprimerUnFavori();
 					break;
 			}
-		} while(numeroSaisi != 5);
+		} while(numeroSaisi != 6);
 	}
 	
 	/**
@@ -147,5 +152,46 @@ public class VueFavoris {
 		
 		// Ajoute le favori
 		this.controleur.ajouterUnFavori(titre, lien, duree, categorie, memo);
+	}
+	
+	public void modifierUnFavori() {
+		System.out.println();
+		System.out.println(" [MOFICATION D'UN FAVORI]\n");
+		
+		int index = 0;
+		if(this.controleur.recupererNbFavoris() > 0) {
+			
+			System.out.print("Veuillez saisir l'identifiant du favori : ");
+			index = clavier.recupererNombre(1, this.controleur.recupererNbFavoris());
+			
+			try {
+				Favoris favoris = this.controleur.recupererFavoris(index - 1);
+				
+				System.out.print("Titre: ");
+				String titre = clavier.recupererTexteCourt(true, true, Optional.of(favoris.getTitre()));
+				favoris.setTitre(titre);
+				
+				System.out.print("URL: ");
+				String lien = clavier.recupererURL(Optional.of(favoris.getLien()));
+				favoris.setLien(lien);
+				
+				System.out.print("Durée (en minutes): ");
+				Duration duree = clavier.recupererDuree(0, 2880, Optional.of(favoris.getDuree()));
+				favoris.setDuree(duree);
+				
+				Categorie categorie = this.controleur.afficherSelectionCategorie();
+				favoris.setCategorie(categorie);
+				
+				System.out.println("Mémo: ");
+				String memo = clavier.recupererTexteLong(Optional.of(favoris.getMemo()));
+				favoris.setMemo(memo);
+				
+			} catch (Exception e) {
+				System.out.println("Le favoris selectionné n'existe pas !");
+			}
+			
+		} else {
+			System.out.println("→ Vous n'avez encore aucun favori pour le moment !");
+		}
 	}
 }

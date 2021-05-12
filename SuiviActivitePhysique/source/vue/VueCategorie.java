@@ -1,9 +1,8 @@
-package vue;
+ package vue;
 
 import java.util.ArrayList;
 import controleur.ControleurCategorie;
 import modele.Categorie;
-import modele.Favoris;
 import utilitaire.Clavier;
 
 /**
@@ -110,8 +109,6 @@ public class VueCategorie {
 		} while(true);
 	}
 	
-	
-	
 	/**
 	 * Récupérer les informations pour ajouter une
 	 * catégorie dans le profil de l'utilisateur.
@@ -149,7 +146,6 @@ public class VueCategorie {
 			} catch (Exception e) {
 				System.out.println("La catégorie selectionnée n'existe pas !");
 			}
-			
 		} else {
 			System.out.println("→ Vous n'avez encore aucune catégorie pour le moment !");
 		}

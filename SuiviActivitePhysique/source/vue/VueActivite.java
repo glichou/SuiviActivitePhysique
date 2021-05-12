@@ -4,10 +4,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Optional;
 
 import controleur.ControleurActivite;
 import modele.Activite;
@@ -53,11 +51,13 @@ public class VueActivite {
 			System.out.println("1] Afficher les activités");
 			System.out.println("2] Afficher une activité");
 			System.out.println("3] Ajouter une activité");
-			System.out.println("4] Revenir à l'accueil");
+			System.out.println("4] Modifier une activité");
+			System.out.println("5] Supprimer une activité");
+			System.out.println("6] Revenir à l'accueil");
 			System.out.print("\nSaisir l'option voulue: ");
 			
 			//Récupérer la valeur saisie par l'utilisateur.
-			numeroSaisi = clavier.recupererNombre(0, 4);
+			numeroSaisi = clavier.recupererNombre(0, 6);
 			System.out.println();
 			
 			//Executer l'action demandé par l'utilisateur.
@@ -71,10 +71,62 @@ public class VueActivite {
 				case 3:
 					this.ajouterUneActivite();
 					break;
+				case 4:
+					this.modifierUneActivite();
+					break;
+				case 5:
+					this.supprimerUneActivite();
+					break;
 			}
-		} while(numeroSaisi != 4);
+		} while(numeroSaisi != 6);
 	}
 	
+	
+	public void modifierUneActivite() {
+		//Demander l'identifiant de l'activité si la liste n'est pas vide.
+		int index = 0;
+		if(this.controleur.recupererNbActivites() > 0) {
+			System.out.print("Veuillez saisir l'identifiant de l'activité : ");
+			index = clavier.recupererNombre(1, this.controleur.recupererNbActivites());
+			
+			try {
+				Activite activite = this.controleur.recupererActivite(index - 1);
+				
+				System.out.println("Veuillez saisir les informations de l'activité: \n");
+				
+				System.out.print("Jour (format JJ/MM/AAAA): ");
+				LocalDate date = clavier.recupererDate(Optional.of(activite.getDebut().toLocalDate()));
+				System.out.print("Heure (format HHhmm): ");
+				LocalTime heure = clavier.recupererHeure(Optional.of(activite.getDebut().toLocalTime()));
+				LocalDateTime dateDebut = date.atTime(heure);
+				activite.setDebut(dateDebut);
+				
+				
+				System.out.print("Durée (minutes): ");
+				Duration duree = clavier.recupererDuree(1, 2880, Optional.of(activite.getDuree()));
+				activite.setDuree(duree);
+				
+				System.out.print("Distance (km): ");
+				long distance = clavier.recupererGrandNombre(1, 10000, Optional.of(activite.getDistanceParcouru()));
+				activite.setDistanceParcouru(distance);
+				
+				Categorie categorie = this.controleur.afficherSelectionCategorie();
+				System.out.print("Difficulté: ");
+				Difficulte difficulte = clavier.recupererDifficulte(Optional.of(activite.getDifficulte()));
+				activite.setDifficulte(difficulte);
+				
+				System.out.println();
+			} catch (Exception e) {
+				System.out.println("L'activité selectionné n'existe pas !");
+			}
+			
+		} else {
+			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
+		}
+		System.out.println();
+	}
+
+
 	/**
 	 * Afficher l'ensemble des activités de l'utilisateurs.
 	 */
@@ -130,9 +182,9 @@ public class VueActivite {
 		System.out.println("Veuillez saisir les informations de l'activité: \n");
 		//LocalDateTime date, Difficulte difficulte, Duration duree, long distance
 		System.out.print("Jour (format JJ/MM/AAAA): ");
-		LocalDate date = clavier.recupererDate(true);
+		LocalDate date = clavier.recupererDate(Optional.of(LocalDate.now()));
 		System.out.print("Heure (format HHhmm): ");
-		LocalTime heure = clavier.recupererHeure(true);
+		LocalTime heure = clavier.recupererHeure(Optional.of(LocalTime.now()));
 		System.out.print("Durée (minutes): ");
 		Duration duree = clavier.recupererDuree(1, 2880);
 		System.out.print("Distance (km): ");
@@ -147,5 +199,26 @@ public class VueActivite {
 		
 		//Ajouter l'activité.
 		this.controleur.ajouterUneActivite(dateDebut, difficulte, duree, distance, categorie);
+	}
+	
+	public void supprimerUneActivite() {
+		//Demander l'identifiant de l'activité si la liste n'est pas vide.
+		int index = 0;
+		if(this.controleur.recupererNbActivites() > 0) {
+			System.out.print("Veuillez saisir l'identifiant de l'activité : ");
+			index = clavier.recupererNombre(1, this.controleur.recupererNbActivites());
+			
+			try {
+				this.controleur.supprimerActivite(index - 1);
+				
+				System.out.println("Veuillez saisir les informations de l'activité: \n");
+			} catch (Exception e) {
+				System.out.println("L'activité selectionné a bien été supprimée !");
+			}
+			
+		} else {
+			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
+		}
+		System.out.println();
 	}
 }

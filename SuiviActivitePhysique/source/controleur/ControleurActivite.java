@@ -39,6 +39,14 @@ public class ControleurActivite {
 	}
 	
 	/**
+	 * Récupérer l'ensemble des activités de l'utilisateur.
+	 * @return Les activités de l'utilisateur.
+	 */
+	public int recupererNbActivites(){
+		return this.modele.getUtilisateur().recupererNbActivites();
+	}
+	
+	/**
 	 * Ajouter une activité dans le profil de l'utilisateur.
 	 * @param date 			; La date de début de l'activité.
 	 * @param difficulte 	; La difficulté de l'activité.
@@ -49,6 +57,26 @@ public class ControleurActivite {
 	public void ajouterUneActivite(LocalDateTime date, Difficulte difficulte, Duration duree, long distance, Categorie categorie) {
 		Activite activite = new Activite(date, difficulte, duree, distance, categorie);
 		this.modele.ajouterActivite(activite);
+	}
+	
+	/**
+	 * Récupérer l'activité de l'utilisateur à l'index donné.
+	 * @param index L'index de l'activité que l'on souhaite.
+	 * @return L'activité à l'index demandé.
+	 * @throws Exception Lever une exception si l'activité n'existe pas.
+	 */
+	public Activite recupererActivite(int index) throws Exception {
+		return this.modele.getUtilisateur().recupererActivite(index);
+	}
+	
+	/**
+	 * Supprimer l'activité de l'utilisateur à l'index donné.
+	 * @param index L'index de l'activité à supprimer.
+	 * @return 
+	 * @throws Exception Lever une exception si l'activité n'existe pas.
+	 */
+	public void supprimerActivite(int index) throws Exception {
+		this.modele.getUtilisateur().supprimerActivite(index);
 	}
 	
 	/**

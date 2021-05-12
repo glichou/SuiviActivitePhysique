@@ -157,4 +157,44 @@ public class Activite implements Serializable, Comparable<Activite> {
     		return false;
     	}
    }
+    
+    /**
+     * Modifier la date de début de l'activité.
+     * @param debut La nouvelle date de début de l'activité.
+     */
+	public void setDebut(LocalDateTime debut) {
+		this.debut = debut;
+	}
+
+	/**
+	 * Modifier la difficulté de l'activité.
+	 * @param difficulte La nouvelle difficulté de l'activité.
+	 */
+	public void setDifficulte(Difficulte difficulte) {
+		this.difficulte = difficulte;
+	}
+
+	/**
+	 * Modifier la durée de l'activité.
+	 * @param duree La nouvelle durée de l'activité.
+	 */
+	public void setDuree(Duration duree) {
+		this.duree = duree;
+	}
+
+	/**
+	 * Modifier la catégorie de l'activité.
+	 * @param categorie La nouvelle catégorie de l'activité.
+	 */
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	/**
+	 * Modifier la distance parcouru de l'activité.
+	 * @param distanceParcouru La nouvelle distance parcouru de l'activité.
+	 */
+	public void setDistanceParcouru(long distanceParcouru) {
+		this.distanceParcouru = distanceParcouru;
+	}
 }

@@ -53,6 +53,14 @@ public class Utilisateur implements Serializable {
 	}
 	
 	/**
+	 * Récupérer le nombre de favoris de l'utilisateur.
+	 * @return Le nombre de favoris.
+	 */
+	public int recupererNbActivites() {
+		return this.activites.size();
+	}
+	
+	/**
 	 * Ajouter une mesure de l'utilisateur.
 	 * @param mesure La mesure à ajouter dans le profil de l'utilisateur.
 	 */
@@ -85,10 +93,23 @@ public class Utilisateur implements Serializable {
 	}
 	
 	/**
+	 * Supprimer une activité de la liste de l'utilisateur.
+	 * @param index L'index de l'activité à supprimer.
+	 * @throws Exception Lever une exception si l'activité n'existe pas.
+	 */
+	public void supprimerActivite(int index) throws Exception {
+		if(index >= 0 && index < this.activites.size()) {
+			this.activites.remove(index);
+		} else {
+			throw new Exception();
+		}
+	}
+	
+	/**
 	 * Récupérer le nombre de favoris de l'utilisateur.
 	 * @return Le nombre de favoris.
 	 */
-	public int getNbFavoris() {
+	public int recupererNbFavoris() {
 		return this.favoris.size();
 	}
 	
@@ -107,6 +128,20 @@ public class Utilisateur implements Serializable {
 	 */
 	public ArrayList<Activite> getActivites() {
 		return this.activites;
+	}
+	
+	/**
+	 * Récupérer l'activité d'un utilisateur à un index.
+	 * @param index L'index de l'activité à récupérer.
+	 * @return L'activité à l'index demandé.
+	 * @throws Exception Leve une exception s'il n'y a pas d'activité à cet index.
+	 */
+	public Activite recupererActivite(int index) throws Exception {
+		if(index >= 0 && index < this.categories.size()) {
+			return this.activites.get(index);
+		} else {
+			throw new Exception();
+		}
 	}
 	
 	/**

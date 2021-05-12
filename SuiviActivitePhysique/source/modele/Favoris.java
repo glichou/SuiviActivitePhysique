@@ -184,4 +184,44 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	public Categorie getCategorie() {
 		return this.categorie;
 	}
+
+	/**
+	 * Modifier le titre du favoris.
+	 * @param titre Le nouveau titre du favoris.
+	 */
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+	
+	/**
+	 * Modifier le lien du favoris.
+	 * @param lien Le nouveau lien du favoris.
+	 */
+	public void setLien(String lien) {
+		this.lien = lien;
+	}
+	
+	/**
+	 * Modifier le memo du favoris.
+	 * @param memo Le nouveau mémo du favoris.
+	 */
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	/**
+	 * Modifier la durée approximative de l'entrainement.
+	 * @param duree La durée de l'entrainement.
+	 */
+	public void setDuree(Duration duree) {
+		this.duree = duree;
+	}
+
+	/**
+	 * Modifier la catégorie du favoris.
+	 * @param categorie La catégorie du favoris.
+	 */
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 }
