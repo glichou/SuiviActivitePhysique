@@ -7,7 +7,8 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Représentation d'une activité physique.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  * @version 0.1
  */
 public class Activite implements Serializable, Comparable<Activite> {
@@ -79,7 +80,7 @@ public class Activite implements Serializable, Comparable<Activite> {
 	 */
 	public String toSmallString() {
 		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy 'à' HH'h'mm");
-		return "[" + this.categorie.getLibelle() + "] " + this.debut.format(formatDate) + " (" + this.duree.toMinutes() + " minutes)";
+		return "[" + ((this.categorie != null)?this.categorie.getLibelle():"-Aucune catégorie-") + "] " + this.debut.format(formatDate) + " (" + this.duree.toMinutes() + " minutes)";
 	}
 	
 	/**
@@ -93,7 +94,7 @@ public class Activite implements Serializable, Comparable<Activite> {
 		DateTimeFormatter formatHeure = DateTimeFormatter.ofPattern("HH'h'mm");
 		
 		//Retourner les informations sur l'activité.
-		return 	"Catégorie: " + this.categorie.getLibelle() + "\n" +
+		return 	"Catégorie: " + ((this.categorie != null)?this.categorie.getLibelle():"-Aucune catégorie-") + "\n" +
 				"Date: " + this.debut.format(formatDate) + "\n" +
 				"Heure: " + this.debut.format(formatHeure) + "\n" +
 				"Durée: " + this.duree.toMinutes() + " minutes" + "\n" +

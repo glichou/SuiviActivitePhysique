@@ -1,20 +1,21 @@
 package vue;
 
-import controleur.ControleurApplication;
+import controleur.ControleurPrincipal;
 import utilitaire.Clavier;
 
 /**
  * Vue principale de l'application.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  */
-public class VueApplication {
-	private ControleurApplication controleur;	
+public class VuePrincipale {
+	private ControleurPrincipal controleur;	
 	private Clavier clavier;
 	
 	/**
 	 * Constructeur de la classe VueApplication.
 	 */
-	public VueApplication() {
+	public VuePrincipale() {
 		//Créer un objet pour récupérer le texte saisit.
 		clavier = new Clavier(System.in);
 	}
@@ -23,7 +24,7 @@ public class VueApplication {
 	 * Définir le controleur en charge de cette vue.
 	 * @param controleur Le controleur en charge de la vue.
 	 */
-	public void setControleur(ControleurApplication controleur) {
+	public void setControleur(ControleurPrincipal controleur) {
 		this.controleur = controleur;
 	}
 	

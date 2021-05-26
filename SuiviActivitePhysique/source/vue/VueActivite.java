@@ -14,8 +14,9 @@ import modele.Difficulte;
 import utilitaire.Clavier;
 
 /**
- * Classe vue
- * @author lichou
+ * Classe de la vue activité
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  */
 public class VueActivite {
 	private ControleurActivite controleur;	
@@ -92,7 +93,7 @@ public class VueActivite {
 			try {
 				Activite activite = this.controleur.recupererActivite(index - 1);
 				
-				System.out.println("Veuillez saisir les informations de l'activité: \n");
+				System.out.println("Veuillez modifier les informations de l'activité : \n");
 				
 				System.out.print("Jour (format JJ/MM/AAAA): ");
 				LocalDate date = clavier.recupererDate(Optional.of(activite.getDebut().toLocalDate()));
@@ -107,17 +108,21 @@ public class VueActivite {
 				activite.setDuree(duree);
 				
 				System.out.print("Distance (km): ");
-				long distance = clavier.recupererGrandNombre(1, 10000, Optional.of(activite.getDistanceParcouru()));
+				long distance = clavier.recupererGrandNombre(0, 10000, Optional.of(activite.getDistanceParcouru()));
 				activite.setDistanceParcouru(distance);
 				
-				Categorie categorie = this.controleur.afficherSelectionCategorie();
+				System.out.print("Catégorie: ");
+				Categorie categorie = this.controleur.afficherSelectionCategorie(activite.getCategorie());
+				activite.setCategorie(categorie);
+				
 				System.out.print("Difficulté: ");
 				Difficulte difficulte = clavier.recupererDifficulte(Optional.of(activite.getDifficulte()));
 				activite.setDifficulte(difficulte);
 				
 				System.out.println();
 			} catch (Exception e) {
-				System.out.println("L'activité selectionné n'existe pas !");
+				e.printStackTrace();
+				System.out.println("L'activité selectionné n'existe pas !"+ e.getLocalizedMessage());
 			}
 			
 		} else {
@@ -166,7 +171,6 @@ public class VueActivite {
 			
 			//Afficher les informations sur l'activité.
 			System.out.println(activite);
-			System.out.println();
 			
 		} else {
 			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
@@ -188,7 +192,7 @@ public class VueActivite {
 		System.out.print("Durée (minutes): ");
 		Duration duree = clavier.recupererDuree(0, 2880);
 		System.out.print("Distance (km): ");
-		long distance = clavier.recupererGrandNombre(1, 10000);
+		long distance = clavier.recupererGrandNombre(0, 10000);
 		Categorie categorie = this.controleur.afficherSelectionCategorie();
 		System.out.print("Difficulté: ");
 		Difficulte difficulte = clavier.recupererDifficulte();

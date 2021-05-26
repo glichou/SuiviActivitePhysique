@@ -4,23 +4,24 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import controleur.ControleurFavoris;
+import controleur.ControleurFavori;
 import modele.Categorie;
-import modele.Favoris;
+import modele.Favori;
 import utilitaire.Clavier;
 
 /**
-* Classe vueFavoris
-* @author quent
+* Classe de la vue favoris.
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
 */
-public class VueFavoris {
-	private ControleurFavoris controleur;
+public class VueFavori {
+	private ControleurFavori controleur;
 	private Clavier clavier;
 	
 	/**
 	* Constructeur de la classe de VueFavoris.
 	*/
-	public VueFavoris() {
+	public VueFavori() {
 		clavier = new Clavier(System.in);
 	}
 	
@@ -28,7 +29,7 @@ public class VueFavoris {
 	* Définir le contrôleur de cette vue.
 	* @param controleur Le controleur de la vue.
 	*/
-	public void setControleur(ControleurFavoris controleur) {
+	public void setControleur(ControleurFavori controleur) {
 		this.controleur = controleur;
 	}
 	
@@ -117,7 +118,7 @@ public class VueFavoris {
 	 */	
 	public void afficherLesFavoris() {
 		//Récupérer les favoris dans le profil de l'utilisateur.
-		ArrayList<Favoris> liste = this.controleur.recupererFavoris();
+		ArrayList<Favori> liste = this.controleur.recupererFavoris();
 		
 		//Lister tous les favoris de l'utilisateur avec un identifiant s'il y en a.
 		if(liste.size() > 0) {
@@ -155,9 +156,6 @@ public class VueFavoris {
 	}
 	
 	public void modifierUnFavori() {
-		System.out.println();
-		System.out.println(" [MOFICATION D'UN FAVORI]\n");
-		
 		int index = 0;
 		if(this.controleur.recupererNbFavoris() > 0) {
 			
@@ -165,26 +163,26 @@ public class VueFavoris {
 			index = clavier.recupererNombre(1, this.controleur.recupererNbFavoris());
 			
 			try {
-				Favoris favoris = this.controleur.recupererFavoris(index - 1);
+				Favori favori = this.controleur.recupererFavoris(index - 1);
 				
 				System.out.print("Titre: ");
-				String titre = clavier.recupererTexteCourt(true, true, Optional.of(favoris.getTitre()));
-				favoris.setTitre(titre);
+				String titre = clavier.recupererTexteCourt(true, true, Optional.of(favori.getTitre()));
+				favori.setTitre(titre);
 				
 				System.out.print("URL: ");
-				String lien = clavier.recupererURL(Optional.of(favoris.getLien()));
-				favoris.setLien(lien);
+				String lien = clavier.recupererURL(Optional.of(favori.getLien()));
+				favori.setLien(lien);
 				
 				System.out.print("Durée (en minutes): ");
-				Duration duree = clavier.recupererDuree(0, 2880, Optional.of(favoris.getDuree()));
-				favoris.setDuree(duree);
+				Duration duree = clavier.recupererDuree(0, 2880, Optional.of(favori.getDuree()));
+				favori.setDuree(duree);
 				
-				Categorie categorie = this.controleur.afficherSelectionCategorie();
-				favoris.setCategorie(categorie);
+				Categorie categorie = this.controleur.afficherSelectionCategorie(favori.getCategorie());
+				favori.setCategorie(categorie);
 				
 				System.out.println("Mémo: ");
-				String memo = clavier.recupererTexteLong(Optional.of(favoris.getMemo()));
-				favoris.setMemo(memo);
+				String memo = clavier.recupererTexteLong(Optional.of(favori.getMemo()));
+				favori.setMemo(memo);
 				
 			} catch (Exception e) {
 				System.out.println("Le favoris selectionné n'existe pas !");

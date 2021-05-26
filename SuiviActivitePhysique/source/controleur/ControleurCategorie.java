@@ -1,19 +1,17 @@
 package controleur;
 
 import java.util.ArrayList;
-
-import modele.Activite;
 import modele.Categorie;
-import modele.ModeleApplication;
-import vue.VueActivite;
+import modele.Utilisateur;
 import vue.VueCategorie;
 
 /**
  * Classe controleur.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  */
 public class ControleurCategorie {
-	private ModeleApplication modele;
+	private Utilisateur modele;
 	private VueCategorie vue;
 	
 	/**
@@ -21,7 +19,7 @@ public class ControleurCategorie {
 	 * @param modele Le modèle du controleur.
 	 * @param vue La vue du controleur.
 	 */
-	public ControleurCategorie(ModeleApplication modele, VueCategorie vue) {
+	public ControleurCategorie(Utilisateur modele, VueCategorie vue) {
 		this.modele = modele;
 		this.vue = vue;
 		this.vue.setControleur(this);
@@ -32,7 +30,7 @@ public class ControleurCategorie {
 	 * @return Les catégories de l'activités.
 	 */
 	public ArrayList<Categorie> recupererCategories() {
-		return this.modele.getUtilisateur().getCategories();
+		return this.modele.getCategories();
 	}
 
 	/**
@@ -42,7 +40,7 @@ public class ControleurCategorie {
 	 * @throws Exception Lever une exception s'il n'y a pas de catégorie à cet index.
 	 */
 	public Categorie recupererCategorie(int index) throws Exception {
-		return this.modele.getUtilisateur().recupererCategorie(index);
+		return this.modele.recupererCategorie(index);
 	}
 	
 	/**
@@ -50,7 +48,7 @@ public class ControleurCategorie {
 	 * @param libelle Le libelle de la catégorie.
 	 */
 	public boolean ajouterCategorie(Categorie categorie) {
-		return this.modele.getUtilisateur().ajouterCategorie(categorie);
+		return this.modele.ajouterCategorie(categorie);
 	}
 
 	/**
@@ -58,7 +56,7 @@ public class ControleurCategorie {
 	 * @return Le nombre de catégories.
 	 */
 	public int recupererNbCategories() {
-		return this.modele.getUtilisateur().getNbCategories();
+		return this.modele.getNbCategories();
 	}
 
 	/**
@@ -67,7 +65,7 @@ public class ControleurCategorie {
 	 * @throws Exception Lever une exception s'il n'y a pas de catégorie à cet index.
 	 */
 	public void supprimerCategorie(int index) throws Exception {
-		this.modele.getUtilisateur().supprimerCategorie(index);
+		this.modele.supprimerCategorie(index);
 		
 	}
 }

@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 /**
  * Représentation d'une catégorie.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  * @version 0.1
  */
 public class Categorie implements Serializable, Comparable<Categorie>{
@@ -38,6 +39,7 @@ public class Categorie implements Serializable, Comparable<Categorie>{
 	 * Récupérer les informations sur la catégorie.
 	 * @param La chaine de caractères.
 	 */
+	@Override
 	public String toString() {
 		return this.libelle;
 	}

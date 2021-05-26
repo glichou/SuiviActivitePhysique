@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 
 /**
  * Représentation d'une mesure de pouls
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  * @version 0.1
  */
 public class Pouls extends Mesure {

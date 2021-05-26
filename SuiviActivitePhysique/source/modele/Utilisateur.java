@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 /**
  * Représentation d'un utilisateur
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  * @version 0.1
  */
 public class Utilisateur implements Serializable {
@@ -13,7 +14,7 @@ public class Utilisateur implements Serializable {
 	private String prenom;
 	private int taille;
 	private double poids;
-	private ArrayList<Favoris> favoris;
+	private ArrayList<Favori> favoris;
 	private ArrayList<Activite> activites;
 	private ArrayList<Mesure> mesures;
 	private ArrayList<Categorie> categories;
@@ -26,7 +27,7 @@ public class Utilisateur implements Serializable {
 	 * @param poids Le poids de l'utilisateur en kg.
 	 */
 	public Utilisateur(String prenom, String nom, int taille, double poids) {
-		this.favoris = new ArrayList<Favoris>();
+		this.favoris = new ArrayList<Favori>();
 		this.activites = new ArrayList<Activite>();
 		this.prenom = prenom;
 		this.nom = nom.toUpperCase();
@@ -38,10 +39,10 @@ public class Utilisateur implements Serializable {
 	
 	/**
 	 * Ajouter un favoris dans la liste de l'utiliateur. 
-	 * @param favoris L'entrainement à ajouter dans les favoris
+	 * @param favori L'entrainement à ajouter dans les favoris
 	 */
-	public void ajouterFavoris(Favoris favoris) {
-		this.favoris.add(favoris);
+	public void ajouterFavori(Favori favori) {
+		this.favoris.add(favori);
 	}
 	
 	/**
@@ -70,11 +71,11 @@ public class Utilisateur implements Serializable {
 	
 	/**
 	 * Vérifier un favoris existe dans la liste de l'utilisateur.
-	 * @param favoris Le favoris dont ont souhaite vérifier l'existance.
+	 * @param favori Le favoris dont ont souhaite vérifier l'existance.
 	 * @return true s'il existe, false sinon.
 	 */
-	public boolean favorisExiste(Favoris favoris) {
-		return this.favoris.contains(favoris);
+	public boolean favorisExiste(Favori favori) {
+		return this.favoris.contains(favori);
 	}
 	
 	/**
@@ -84,7 +85,7 @@ public class Utilisateur implements Serializable {
 	 * @throws Exception Lever une exception s'il n'y a
 	 * pas de favoris à cet index.
 	 */
-	public Favoris recupererFavoris(int index) throws Exception {
+	public Favori recupererFavori(int index) throws Exception {
 		if(index >= 0 && index < this.favoris.size()) {
 			return this.favoris.get(index);
 		} else {
@@ -117,7 +118,7 @@ public class Utilisateur implements Serializable {
 	 * Récupérer les favoris de l'utilisateur.
 	 * @return Les favoris de l'utilisateur.
 	 */
-	public ArrayList<Favoris> getFavoris() {
+	public ArrayList<Favori> getFavoris() {
 		return this.favoris;
 	}
 
@@ -136,7 +137,7 @@ public class Utilisateur implements Serializable {
 	 * @throws Exception Leve une exception s'il n'y a pas d'activité à cet index.
 	 */
 	public Activite recupererActivite(int index) throws Exception {
-		if(index >= 0 && index < this.categories.size()) {
+		if(index >= 0 && index < this.activites.size()) {
 			return this.activites.get(index);
 		} else {
 			throw new Exception();
@@ -210,6 +211,7 @@ public class Utilisateur implements Serializable {
 	/**
 	 * Récupérer les informations de l'utilisateur.
 	 */
+	@Override
 	public String toString() {
 		return "==UTILISATEUR==\n" +
 				"Nom: " + nom + "\n" +
@@ -231,7 +233,7 @@ public class Utilisateur implements Serializable {
 	 * @param index L'index du favoris à supprimer.
 	 * @throws Exception Lever une exception si le favoris n'existe pas.
 	 */
-	public void supprimerFavoris(int index) throws Exception {
+	public void supprimerFavori(int index) throws Exception {
 		if(index >= 0 && index < this.favoris.size()) {
 			this.favoris.remove(index);
 		} else {
@@ -240,15 +242,52 @@ public class Utilisateur implements Serializable {
 	}
 	
 	/**
-	 * Supprimer une catégorie de la liste de l'utilisateur.
+	 * Supprimer une catégorie de l'utilisateur.
 	 * @param index L'index de la catégorie à supprimer.
 	 * @throws Exception Lever une exception si la catégorie n'existe pas.
 	 */
 	public void supprimerCategorie(int index) throws Exception {
 		if(index >= 0 && index < this.categories.size()) {
+			
+			Categorie categorie = this.categories.get(index);
+			
+			//Supprimer la catégorie des activités existantes.
+			this.remplacerCategorieActivites(categorie, null);
+			
+			//Supprimer la catégorie des favoris existants.
+			this.remplacerCategorieFavoris(categorie, null);
+			
 			this.categories.remove(index);
 		} else {
 			throw new Exception();
+		}
+	}
+	
+	/**
+	 * Remplacer une catégorie par une autre dans la liste des activités
+	 * de l'utilisateur.
+	 * @param ancienne L'ancienne catégorie que l'on souhaite remplacer.
+	 * @param nouvelle La nouvelle catégorie qui remplacera l'ancienne.
+	 */
+	public void remplacerCategorieActivites(Categorie ancienne, Categorie nouvelle) {
+		for(Activite activite : this.activites) {
+			if(activite.getCategorie().equals(ancienne)) {
+				activite.setCategorie(nouvelle);
+			}
+		}
+	}
+	
+	/**
+	 * Remplacer une catégorie par une autre dans la liste des favoris
+	 * de l'utilisateur.
+	 * @param ancienne L'ancienne catégorie que l'on souhaite remplacer.
+	 * @param nouvelle La nouvelle catégorie qui remplacera l'ancienne.
+	 */
+	public void remplacerCategorieFavoris(Categorie ancienne, Categorie nouvelle) {
+		for(Favori favori : this.favoris) {
+			if(favori.getCategorie().equals(ancienne)) {
+				favori.setCategorie(nouvelle);
+			}
 		}
 	}
 }

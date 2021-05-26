@@ -2,25 +2,25 @@ package controleur;
 
 import modele.ModeleApplication;
 import vue.VueActivite;
-import vue.VueApplication;
+import vue.VuePrincipale;
 import vue.VueCategorie;
-import vue.VueFavoris;
+import vue.VueFavori;
 
 /**
  * Classe controleur.
- * @author lichou
- *
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  */
-public class ControleurApplication {
+public class ControleurPrincipal {
 	private ModeleApplication modele;
-	private VueApplication vue;
+	private VuePrincipale vue;
 	
 	/**
 	 * Constructeur de la classe ControleurApplication.
 	 * @param modele Le modèle de l'application.
 	 * @param vue La vue de l'application.
 	 */
-	public ControleurApplication(ModeleApplication modele, VueApplication vue) {
+	public ControleurPrincipal(ModeleApplication modele, VuePrincipale vue) {
 		this.modele = modele;
 		this.vue = vue;
 		this.vue.setControleur(this);
@@ -66,7 +66,7 @@ public class ControleurApplication {
 	 */
 	public void afficherMenuActivite() {
 		VueActivite vActivite = new VueActivite();
-		ControleurActivite cActivite = new ControleurActivite(this.modele, vActivite);
+		ControleurActivite cActivite = new ControleurActivite(this.modele.getUtilisateur(), vActivite);
 		vActivite.afficherMenu();
 	}
 	
@@ -74,8 +74,8 @@ public class ControleurApplication {
 	 * Passer à la vue des favoris.
 	 */
 	public void afficherMenuFavori() {
-		VueFavoris vFavori = new VueFavoris();
-		ControleurFavoris cFavori = new ControleurFavoris(this.modele, vFavori);
+		VueFavori vFavori = new VueFavori();
+		ControleurFavori cFavori = new ControleurFavori(this.modele.getUtilisateur(), vFavori);
 		vFavori.afficherMenu();
 	
 	}
@@ -85,7 +85,7 @@ public class ControleurApplication {
 	 */
 	public void afficherMenuCategorie() {
 		VueCategorie vCategorie = new VueCategorie();
-		ControleurCategorie cFavori = new ControleurCategorie(this.modele, vCategorie);
+		ControleurCategorie cFavori = new ControleurCategorie(this.modele.getUtilisateur(), vCategorie);
 		vCategorie.afficherMenu();	
 	}
 }

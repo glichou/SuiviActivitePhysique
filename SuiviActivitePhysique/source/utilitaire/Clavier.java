@@ -6,18 +6,20 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import modele.Categorie;
 import modele.Difficulte;
-import modele.Pouls;
 
 /**
  * Classe utilitaire permettant la mutualisation des
  * fonctions de contrôle de la saisie.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  * @version 0.1
  */
 public class Clavier {
@@ -209,6 +211,7 @@ public class Clavier {
 		boolean valide = false;
 		String chaine = null;
 		Difficulte difficulte = null;
+		int difficilteMax = Difficulte.values().length;
 		
 		while(!valide) {
 			chaine = clavier.nextLine();
@@ -217,42 +220,11 @@ public class Clavier {
 				try {
 					nombre = Short.parseShort(chaine);
 					
-					if(nombre >= 1 && nombre <= 10) {
-						switch(nombre) {
-							case 1:
-								difficulte = new Difficulte(Difficulte.Niveau.UN);
-								break;
-							case 2:
-								difficulte = new Difficulte(Difficulte.Niveau.DEUX);
-								break;
-							case 3:
-								difficulte = new Difficulte(Difficulte.Niveau.TROIS);
-								break;
-							case 4:
-								difficulte = new Difficulte(Difficulte.Niveau.QUATRE);
-								break;
-							case 5:
-								difficulte = new Difficulte(Difficulte.Niveau.CINQ);
-								break;
-							case 6:
-								difficulte = new Difficulte(Difficulte.Niveau.SIX);
-								break;
-							case 7:
-								difficulte = new Difficulte(Difficulte.Niveau.SEPT);
-								break;
-							case 8:
-								difficulte = new Difficulte(Difficulte.Niveau.HUIT);
-								break;
-							case 9:
-								difficulte = new Difficulte(Difficulte.Niveau.NEUF);
-								break;
-							case 10:
-								difficulte = new Difficulte(Difficulte.Niveau.DIX);
-								break;
-						}
+					if(nombre >= 1 && nombre <= difficilteMax) {
+						difficulte = Difficulte.values()[nombre - 1];
 						valide = true;
 					} else {
-						System.out.print("Veuillez saisir un nombre entier compris entre 1 et 10 : ");
+						System.out.print("Veuillez saisir un nombre entier compris entre 1 et " + difficilteMax + " : ");
 					}
 			    } catch (NumberFormatException exception) {
 			    	System.out.print("Veuillez saisir un nombre entier : ");
@@ -494,11 +466,7 @@ public class Clavier {
 		}
 		return chaineFinale;
 	}
-	//===================================
-	//https://stackoverflow.com/questions/965690/java-optional-parameters
-	//https://stackoverflow.com/questions/3158730/what-do-3-dots-next-to-a-parameter-type-mean-in-java
-	//https://www.developpez.com/actu/134958/Java-apprendre-a-utiliser-la-classe-Optional-lt-T-gt-pour-eviter-d-utiliser-explicitement-null-par-Gugelhupf/
-	
+
 	/**
 	 * Récupérer un texte saisit par l'utilisateur.
 	 * @param chiffreAutorise Autoriser la saisit de chiffre dans le texte.
@@ -547,28 +515,4 @@ public class Clavier {
 		}while(!valide);
 		return chaine;
 	}
-	
-	public static void modifierCouleurPolice() {
-		System.out.println((char)27 + "[31m" + "ERROR MESSAGE IN RED");
-
-		System.out.print("\033[0;35m");
-	}
-	
-	/**
-	 * Effacer l'écran (possible sur certains système d'exploitation)
-	 */
-	public static void effacerEcran () {
-        String systemeExploitation = System.getProperty("os.name");
-        
-        if (systemeExploitation.contains("Windows")) {
-            try {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } catch (Exception exception) {
-            }
-        } else if (systemeExploitation.contains("Mac")) {
-            System.out.print("\033[H\033[2J");
-        } else {
-            System.out.println("Unable to determine system info. Unable to clear screen.");
-        }
-	 }
 }

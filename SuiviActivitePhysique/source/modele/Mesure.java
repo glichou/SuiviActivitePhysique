@@ -6,7 +6,8 @@ import java.time.ZoneId;
 
 /**
  * Représentation abstraite d'une Mesure.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  */
 public abstract class Mesure implements Serializable {
 	private LocalDateTime date;

@@ -9,10 +9,11 @@ import java.util.regex.Pattern;
 
 /**
  * Réprésentation d'un Favoris.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  * @version 0.1
  */
-public class Favoris implements Serializable, Comparable<Favoris> {
+public class Favori implements Serializable, Comparable<Favori> {
 	private LocalDateTime dateCreation;
 	private String titre;
 	private String lien;
@@ -21,13 +22,13 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	private Categorie categorie;
 	
 	/**
-	 * Constructeur de l'objet Favoris.
-	 * @param lien 			; Le lien vers la video.
-	 * @param duree 		; La durée approximative de l'entrainement.
-	 * @param categorie 	; La catégorie de l'entrainement.
-	 * @param memo 			; Un mémo défini par l'utilisateur.
+	 * Constructeur d'un Favori.
+	 * @param lien Lien vers une vidéo ou un site.
+	 * @param duree La durée approximative de l'entrainement.
+	 * @param categorie La catégorie de l'entrainement.
+	 * @param memo Un mémo défini par l'utilisateur.
 	 */
-	public Favoris(String titre, String lien, Duration duree, Categorie categorie, String memo) {
+	public Favori(String titre, String lien, Duration duree, Categorie categorie, String memo) {
 		this.titre = titre;
 		this.dateCreation = LocalDateTime.now();;
 		this.lien = lien;
@@ -41,13 +42,14 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	 * @return La chaine de caractères.
 	 */
 	public String toSmallString() {
-		return "[" + ((categorie != null)?categorie.getLibelle():"(catégorie supprimée)") + "] " + this.titre + " - ˹" + this.recupererDomaineLien() + "˼";
+		return "[" + ((categorie != null)?categorie.getLibelle():"-Aucune catégorie-") + "] " + this.titre + " - ˹" + this.recupererDomaineLien() + "˼";
 	}
 	
 	/**
 	 * Récupérer les informations sur le Favori
 	 * @return La chaine de caractères.
 	 */
+	@Override
 	public String toString() {
 		DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy");
 		DateTimeFormatter formatHeure = DateTimeFormatter.ofPattern("HH'h'mm");
@@ -57,7 +59,7 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 				"Heure de création: " + this.dateCreation.format(formatHeure) + "\n" + 
 				"URL: " + lien + "\n" +
 				"Durée: " + duree.toMinutes() + " minutes\n" +
-				"Categorie: " + ((categorie != null)?categorie.getLibelle():"(catégorie supprimée)") + "\n" +
+				"Categorie: " + ((categorie != null)?categorie.getLibelle():"-Aucune catégorie-") + "\n" +
 				"Mémo: " + (memo.isEmpty()?"(vide)":memo);
 	}
 	
@@ -87,22 +89,22 @@ public class Favoris implements Serializable, Comparable<Favoris> {
     * @return Trois valeurs possibles -1 pour plus petits, 0 pour égal et 1 pour supérieur.
     */
 	@Override
-	public int compareTo(Favoris favoris) {
-		if(this.equals(favoris)) {
+	public int compareTo(Favori favori) {
+		if(this.equals(favori)) {
 			return 0;
 		} else {
-			if(!this.dateCreation.equals(favoris.getDateCreation())) {
-				return this.dateCreation.compareTo(favoris.getDateCreation());
-			} else if (!this.categorie.equals(favoris.getCategorie())) {
-				return this.categorie.compareTo(favoris.categorie);
-			} else if(! this.duree.equals(favoris.getDuree())) {
-				return this.duree.compareTo(favoris.getDuree());
-			} else if(! this.titre.equals(favoris.getTitre())) {
-				return this.titre.compareTo(favoris.getTitre());
-			} else if(! this.lien.equals(favoris.getLien())) {
-				return this.lien.compareTo(favoris.getLien());
+			if(!this.dateCreation.equals(favori.getDateCreation())) {
+				return this.dateCreation.compareTo(favori.getDateCreation());
+			} else if (!this.categorie.equals(favori.getCategorie())) {
+				return this.categorie.compareTo(favori.categorie);
+			} else if(! this.duree.equals(favori.getDuree())) {
+				return this.duree.compareTo(favori.getDuree());
+			} else if(! this.titre.equals(favori.getTitre())) {
+				return this.titre.compareTo(favori.getTitre());
+			} else if(! this.lien.equals(favori.getLien())) {
+				return this.lien.compareTo(favori.getLien());
 			} else {
-				return this.memo.compareTo(favoris.getMemo());
+				return this.memo.compareTo(favori.getMemo());
 			}
 		}
 	}
@@ -120,16 +122,16 @@ public class Favoris implements Serializable, Comparable<Favoris> {
     		//Les deux objets ont la même référence, se sont les mêmes.
     		return true;
     		
-    	} else if(objet instanceof Favoris) {
+    	} else if(objet instanceof Favori) {
     		//Vérifier si tous les favori sont identiques.
-    		Favoris favoris = (Favoris) objet;
+    		Favori favori = (Favori) objet;
     		
-    		return (this.dateCreation.equals(favoris.getDateCreation()) && 
-    				this.categorie.equals(favoris.getCategorie()) && 
-    				this.duree.equals(favoris.getDuree()) &&
-    				this.titre.equals(favoris.getTitre()) &&
-    				this.lien.equals(favoris.getLien()) &&
-    				this.memo.equals(favoris.getMemo()));
+    		return (this.dateCreation.equals(favori.getDateCreation()) && 
+    				this.categorie.equals(favori.getCategorie()) && 
+    				this.duree.equals(favori.getDuree()) &&
+    				this.titre.equals(favori.getTitre()) &&
+    				this.lien.equals(favori.getLien()) &&
+    				this.memo.equals(favori.getMemo()));
     	} else {
     		//L'objet n'est pas un favori, ils sont différents.
     		return false;
@@ -198,6 +200,7 @@ public class Favoris implements Serializable, Comparable<Favoris> {
 	 * @param lien Le nouveau lien du favoris.
 	 */
 	public void setLien(String lien) {
+		
 		this.lien = lien;
 	}
 	

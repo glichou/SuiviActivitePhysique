@@ -9,7 +9,8 @@ import utilitaire.Clavier;
 
 /**
  * Vue de la Catégorie.
- * @author lichou
+ * @author Grégoire LICHOU
+ * @author Quentin COUSTURIAN
  */
 public class VueCategorie {
 	private ControleurCategorie controleur;	
@@ -64,6 +65,7 @@ public class VueCategorie {
 					this.supprimerUneCategorie();
 					break;
 			}
+			System.out.println();
 		} while(numeroSaisi != 5);
 	}
 
@@ -88,14 +90,23 @@ public class VueCategorie {
 	 * Récupérer la catégorie sélectionné par l'utilisateur.
 	 * @return La catégorie sélectionné par l'utilisateur.
 	 */
-	public Categorie selectionnerCategorie() {
+	public Categorie selectionnerCategorie(Optional<Categorie> categorieParDefaut) {
+		ArrayList<Categorie> liste;
+		Optional<Integer> numeroParDefaut;
 		int index;
-		
+
 		do {
-			System.out.println("Catégorie :");
+			//Récupérer la liste des catégories de l'utilisateur.
+			liste = this.controleur.recupererCategories();
 			
-			//Récupérer les catégories.
-			ArrayList<Categorie> liste = this.controleur.recupererCategories();
+			//Déterminer l'identifiant dans le menu de la catégorie par défaut s'il y en a une.
+			if(categorieParDefaut.isPresent() && liste.contains(categorieParDefaut.get())) {
+				numeroParDefaut = Optional.of((liste.indexOf(categorieParDefaut.get()) + 1));
+			} else {
+				numeroParDefaut = Optional.empty();
+			}
+					
+			System.out.println("Catégorie :");
 			
 			//Lister les catégories existantes et l'option permettant l'ajout d'une nouvelle.
 			for(index = 0; index < liste.size(); index++){
@@ -105,10 +116,10 @@ public class VueCategorie {
 			
 			//Récupérer l'option selectionné par l'utilisateur.
 			System.out.print("\nSélectionnez le numéro souhaité : ");
-			int numero = clavier.recupererNombre(1, (index + 1));
+			int numero = clavier.recupererNombre(1, (index + 1), numeroParDefaut);
 			
 			if(numero == (index + 1)) {
-				ajouterUneCategorie();
+				return ajouterUneCategorie();
 			} else {
 				return liste.get(numero - 1);
 			}
@@ -116,24 +127,27 @@ public class VueCategorie {
 	}
 	
 	/**
-	 * Récupérer les informations pour ajouter une
-	 * catégorie dans le profil de l'utilisateur.
+	 * Récupérer les informations pour ajouter une catégorie dans 
+	 * le profil de l'utilisateur.
+	 * @return La catégorie nouvellement créé.
 	 */
-	public void ajouterUneCategorie() {
+	public Categorie ajouterUneCategorie() {
+		Categorie categorie = null;
 		boolean valide = false;
 		String chaine;
 		
-		System.out.print("Nom de la catégorie à ajouter : ");
+		System.out.print("Libellé de la catégorie à ajouter : ");
 		do {
 			chaine  = clavier.recupererTexteCourt(false, true);
 
-			Categorie categorie = new Categorie(chaine);			
+			categorie = new Categorie(chaine);			
 			if(this.controleur.ajouterCategorie(categorie)) {
 				valide = true;
 			} else {
 				System.out.print("La catégorie existe déjà ! Nom de la catégorie à ajouter : ");
 			}
 		} while(!valide);
+		return categorie;
 	}
 	
 	/**
