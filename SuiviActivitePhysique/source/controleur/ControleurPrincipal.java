@@ -66,7 +66,7 @@ public class ControleurPrincipal {
 	 */
 	public void afficherMenuActivite() {
 		VueActivite vActivite = new VueActivite();
-		ControleurActivite cActivite = new ControleurActivite(this.modele.getUtilisateur(), vActivite);
+		new ControleurActivite(this.modele.getUtilisateur(), vActivite);
 		vActivite.afficherMenu();
 	}
 	
@@ -75,7 +75,7 @@ public class ControleurPrincipal {
 	 */
 	public void afficherMenuFavori() {
 		VueFavori vFavori = new VueFavori();
-		ControleurFavori cFavori = new ControleurFavori(this.modele.getUtilisateur(), vFavori);
+		new ControleurFavori(this.modele.getUtilisateur(), vFavori);
 		vFavori.afficherMenu();
 	
 	}
@@ -85,7 +85,7 @@ public class ControleurPrincipal {
 	 */
 	public void afficherMenuCategorie() {
 		VueCategorie vCategorie = new VueCategorie();
-		ControleurCategorie cFavori = new ControleurCategorie(this.modele.getUtilisateur(), vCategorie);
+		new ControleurCategorie(this.modele.getUtilisateur(), vCategorie);
 		vCategorie.afficherMenu();	
 	}
 }

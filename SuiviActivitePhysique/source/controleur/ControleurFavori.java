@@ -69,7 +69,7 @@ public class ControleurFavori {
 	 */
 	public Categorie afficherSelectionCategorie(Categorie valeurParDefaut) {
 		VueCategorie vCategorie = new VueCategorie();
-		ControleurCategorie cCategorie = new ControleurCategorie(this.modele, vCategorie);
+		new ControleurCategorie(this.modele, vCategorie);
 		
 		if(valeurParDefaut != null) {	
 			return vCategorie.selectionnerCategorie(Optional.of(valeurParDefaut));

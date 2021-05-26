@@ -28,7 +28,7 @@ public class Main {
 		//Mettre en place l'application.
 		ModeleApplication modele = new ModeleApplication();
 		VuePrincipale vue = new VuePrincipale();
-		ControleurPrincipal controleur = new ControleurPrincipal(modele, vue);
+		new ControleurPrincipal(modele, vue);
 		
 		//Charger la sauvegarde dans le profil.
 		modele.setUtilisateur(chargerProfil(FICHIER_SAUVEGARDE));
