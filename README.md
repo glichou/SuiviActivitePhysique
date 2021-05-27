@@ -9,10 +9,10 @@ Cet ensemble de liens favoris, permettra de retrouver plus facilement du contenu
 
 À chaque session d'entraînement l’utilisateur pourra renseigner les détails de l’activité qu’il vient de réaliser pour, plus tard, consulter les statistiques.
 
-# Captures d'écran
+## Captures d'écran
 
-![Affichage des statistiques](statisriques.png)
+![Affichage des statistiques](statistiques.png)
 
-# Documentation
+## Documentation
 
 [Javadoc](https://glichou.github.io/SuiviActivitePhysique)
