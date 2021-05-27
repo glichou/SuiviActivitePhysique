@@ -47,11 +47,12 @@ public class VuePrincipale {
 			System.out.println("1] Activité");
 			System.out.println("2] Favoris");
 			System.out.println("3] Catégories");
-			System.out.println("4] QUITTER");
+			System.out.println("4] Statistiques");
+			System.out.println("5] QUITTER");
 			System.out.print("\nVeuillez choisir une option: ");
 			
 			//Récupérer la valeur saisie par l'utilisateur.
-			numeroSaisi = clavier.recupererNombre(1, 4);
+			numeroSaisi = clavier.recupererNombre(1, 5);
 			System.out.println();
 			
 			// Executer l'action demandé par l'utilisateur.
@@ -65,8 +66,11 @@ public class VuePrincipale {
 				case 3:
 					controleur.afficherMenuCategorie();
 					break;
+				case 4:
+					controleur.afficherMenuStatistique();
+					break;
 			}
-		} while(numeroSaisi != 4);
+		} while(numeroSaisi != 5);
 		
 		//Parceque... pourquoi pas ?! 
 		afficherLogo();

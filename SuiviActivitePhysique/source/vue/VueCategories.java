@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.Optional;
 
-import controleur.ControleurCategorie;
+import controleur.ControleurCategories;
 import modele.Categorie;
 import utilitaire.Clavier;
 
@@ -12,14 +12,14 @@ import utilitaire.Clavier;
  * @author Grégoire LICHOU
  * @author Quentin COUSTURIAN
  */
-public class VueCategorie {
-	private ControleurCategorie controleur;	
+public class VueCategories {
+	private ControleurCategories controleur;	
 	private Clavier clavier;
 	
 	/**
 	 * Constructeur de la classe de VueCategorie.
 	 */
-	public VueCategorie() {
+	public VueCategories() {
 		//Créer un objet pour récupérer le texte saisit.
 		clavier = new Clavier(System.in);
 	}
@@ -28,7 +28,7 @@ public class VueCategorie {
 	 * Définir le controleur en charge de cette vue.
 	 * @param controleur Le controleur en charge de la vue.
 	 */
-	public void setControleur(ControleurCategorie controleur) {
+	public void setControleur(ControleurCategories controleur) {
 		this.controleur = controleur;	
 	}
 	

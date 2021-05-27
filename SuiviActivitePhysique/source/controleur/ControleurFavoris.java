@@ -7,24 +7,24 @@ import java.util.Optional;
 import modele.Utilisateur;
 import modele.Categorie;
 import modele.Favori;
-import vue.VueCategorie;
-import vue.VueFavori;
+import vue.VueCategories;
+import vue.VueFavoris;
 
 /**
  * Classe du controleur favoris
  * @author Grégoire LICHOU
  * @author Quentin COUSTURIAN
  */
-public class ControleurFavori {
+public class ControleurFavoris {
 	private Utilisateur modele;
-	private VueFavori vue;
+	private VueFavoris vue;
 	
 	/**
 	 * Constructeur de la classe.
 	 * @param modele Le modèle du controleur.
 	 * @param vue La vue du controleur.
 	 */
-	public ControleurFavori(Utilisateur modele, VueFavori vue) {
+	public ControleurFavoris(Utilisateur modele, VueFavoris vue) {
 		this.modele = modele;
 		this.vue = vue;
 		this.vue.setControleur(this);
@@ -68,8 +68,8 @@ public class ControleurFavori {
 	 * @return La catégorie sélectionné.
 	 */
 	public Categorie afficherSelectionCategorie(Categorie valeurParDefaut) {
-		VueCategorie vCategorie = new VueCategorie();
-		new ControleurCategorie(this.modele, vCategorie);
+		VueCategories vCategorie = new VueCategories();
+		new ControleurCategories(this.modele, vCategorie);
 		
 		if(valeurParDefaut != null) {	
 			return vCategorie.selectionnerCategorie(Optional.of(valeurParDefaut));

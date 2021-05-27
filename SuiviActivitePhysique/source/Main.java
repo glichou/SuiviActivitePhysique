@@ -4,9 +4,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import controleur.ControleurPrincipal;
+import modele.Activite;
+import modele.Categorie;
+import modele.Difficulte;
 import modele.ModeleApplication;
+import modele.Statistique;
 import modele.Utilisateur;
 import vue.VuePrincipale;
 
@@ -24,7 +32,31 @@ public class Main {
 	 * @param parametres Les paramètres en entrée de l'application.
 	 */
 	public static void main(String[] parametres) {		
+		/**ArrayList<Activite> maListe = new ArrayList<>();
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(12), 0, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(45), 100, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(45), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(35), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(45), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(120), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(45), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(45), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(360), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2021, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(45), 10, new Categorie("test")));
+		maListe.add(new Activite(LocalDateTime.of(2012, 01, 01, 10, 25), Difficulte.NEUF, Duration.ofMinutes(2450), 10, new Categorie("test")));
+		System.out.println("Avant:" + maListe.size());
+		Statistique stat = Statistique.genererStatistiques(LocalDate.of(2021, 01, 01), LocalDate.of(2022, 01, 01), maListe);
+		System.out.println("Après" + maListe.size());
 		
+		System.out.println("Max distance : " + stat.getDistanceParcouru().getMax() + " km");
+		System.out.println("Min distance : " + stat.getDistanceParcouru().getMin() + " km");
+		System.out.println("Moy distance : " + stat.getDistanceParcouru().getMoyenne() + " km");
+		System.out.println("Tot distance : " + stat.getDistanceParcouru().getTotal() + " km");
+		System.out.println("Min duree : " + stat.getDuree().getMin());
+		System.out.println("Max duree : " + stat.getDuree().getMax());
+		System.out.println("Moy duree : " + stat.getDuree().getMoyenne());
+		System.out.println("Tot duree : " + stat.getDuree().getTotal());
+		**/
 		//Mettre en place l'application.
 		ModeleApplication modele = new ModeleApplication();
 		VuePrincipale vue = new VuePrincipale();

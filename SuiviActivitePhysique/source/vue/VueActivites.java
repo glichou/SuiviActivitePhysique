@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import controleur.ControleurActivite;
+import controleur.ControleurActivites;
 import modele.Activite;
 import modele.Categorie;
 import modele.Difficulte;
@@ -18,14 +18,14 @@ import utilitaire.Clavier;
  * @author Grégoire LICHOU
  * @author Quentin COUSTURIAN
  */
-public class VueActivite {
-	private ControleurActivite controleur;	
+public class VueActivites {
+	private ControleurActivites controleur;	
 	private Clavier clavier;
 	
 	/**
 	 * Constructeur de la classe de VueActivite.
 	 */
-	public VueActivite() {
+	public VueActivites() {
 		//Créer un objet pour récupérer le texte saisit.
 		clavier = new Clavier(System.in);
 	}
@@ -35,7 +35,7 @@ public class VueActivite {
 	 * Définir le controleur en charge de cette vue.
 	 * @param controleur Le controleur en charge de la vue.
 	 */
-	public void setControleur(ControleurActivite controleur) {
+	public void setControleur(ControleurActivites controleur) {
 		this.controleur = controleur;	
 	}
 	
@@ -58,7 +58,7 @@ public class VueActivite {
 			System.out.print("\nSaisir l'option voulue: ");
 			
 			//Récupérer la valeur saisie par l'utilisateur.
-			numeroSaisi = clavier.recupererNombre(0, 6);
+			numeroSaisi = clavier.recupererNombre(1, 6);
 			System.out.println();
 			
 			//Executer l'action demandé par l'utilisateur.
@@ -79,6 +79,7 @@ public class VueActivite {
 					this.supprimerUneActivite();
 					break;
 			}
+			System.out.println();
 		} while(numeroSaisi != 6);
 	}
 	
@@ -128,7 +129,6 @@ public class VueActivite {
 		} else {
 			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
 		}
-		System.out.println();
 	}
 
 
@@ -151,7 +151,6 @@ public class VueActivite {
 			//Afficher un message car il n'y a pas d'activité dans la liste.
 			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
 		}
-		System.out.println();
 	}
 	
 	/**
@@ -175,7 +174,6 @@ public class VueActivite {
 		} else {
 			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
 		}
-		System.out.println();
 	}
 	
 	/**
@@ -196,7 +194,6 @@ public class VueActivite {
 		Categorie categorie = this.controleur.afficherSelectionCategorie();
 		System.out.print("Difficulté: ");
 		Difficulte difficulte = clavier.recupererDifficulte();
-		System.out.println();
 		
 		//Assembler la date et l'heure de début pour former un DateTime.
 		LocalDateTime dateDebut = date.atTime(heure);
@@ -215,14 +212,13 @@ public class VueActivite {
 			try {
 				this.controleur.supprimerActivite(index - 1);
 				
-				System.out.println("Veuillez saisir les informations de l'activité: \n");
-			} catch (Exception e) {
 				System.out.println("L'activité selectionné a bien été supprimée !");
+			} catch (Exception e) {
+				System.out.println("L'activité selectionné n'existe pas !");
 			}
 			
 		} else {
 			System.out.println("→ Vous n'avez encore aucune activité pour le moment !");
 		}
-		System.out.println();
 	}
 }

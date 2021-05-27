@@ -3,23 +3,23 @@ package controleur;
 import java.util.ArrayList;
 import modele.Categorie;
 import modele.Utilisateur;
-import vue.VueCategorie;
+import vue.VueCategories;
 
 /**
  * Classe controleur.
  * @author Grégoire LICHOU
  * @author Quentin COUSTURIAN
  */
-public class ControleurCategorie {
+public class ControleurCategories {
 	private Utilisateur modele;
-	private VueCategorie vue;
+	private VueCategories vue;
 	
 	/**
 	 * Controleur de la classe ControleurCategorie
 	 * @param modele Le modèle du controleur.
 	 * @param vue La vue du controleur.
 	 */
-	public ControleurCategorie(Utilisateur modele, VueCategorie vue) {
+	public ControleurCategories(Utilisateur modele, VueCategories vue) {
 		this.modele = modele;
 		this.vue = vue;
 		this.vue.setControleur(this);

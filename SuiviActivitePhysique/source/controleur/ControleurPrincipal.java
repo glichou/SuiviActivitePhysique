@@ -1,10 +1,11 @@
 package controleur;
 
 import modele.ModeleApplication;
-import vue.VueActivite;
+import vue.VueActivites;
 import vue.VuePrincipale;
-import vue.VueCategorie;
-import vue.VueFavori;
+import vue.VueStatistiques;
+import vue.VueCategories;
+import vue.VueFavoris;
 
 /**
  * Classe controleur.
@@ -65,17 +66,17 @@ public class ControleurPrincipal {
 	 * Passer à la vue de l'activité.
 	 */
 	public void afficherMenuActivite() {
-		VueActivite vActivite = new VueActivite();
-		new ControleurActivite(this.modele.getUtilisateur(), vActivite);
-		vActivite.afficherMenu();
+		VueActivites vActivites = new VueActivites();
+		new ControleurActivites(this.modele.getUtilisateur(), vActivites);
+		vActivites.afficherMenu();
 	}
 	
 	/**
 	 * Passer à la vue des favoris.
 	 */
 	public void afficherMenuFavori() {
-		VueFavori vFavori = new VueFavori();
-		new ControleurFavori(this.modele.getUtilisateur(), vFavori);
+		VueFavoris vFavori = new VueFavoris();
+		new ControleurFavoris(this.modele.getUtilisateur(), vFavori);
 		vFavori.afficherMenu();
 	
 	}
@@ -84,8 +85,18 @@ public class ControleurPrincipal {
 	 * Passer à la vue des catégories.
 	 */
 	public void afficherMenuCategorie() {
-		VueCategorie vCategorie = new VueCategorie();
-		new ControleurCategorie(this.modele.getUtilisateur(), vCategorie);
-		vCategorie.afficherMenu();	
+		VueCategories vCategories = new VueCategories();
+		new ControleurCategories(this.modele.getUtilisateur(), vCategories);
+		vCategories.afficherMenu();	
+	}
+	
+	/**
+	 * Passer à la vue des statistiques.
+	 */
+	public void afficherMenuStatistique() {
+		VueStatistiques vStatistiques = new VueStatistiques();
+		new ControleurStatistiques(this.modele.getUtilisateur(), vStatistiques);
+		vStatistiques.afficherMenu();
+		
 	}
 }

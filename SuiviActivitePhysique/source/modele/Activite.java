@@ -139,25 +139,25 @@ public class Activite implements Serializable, Comparable<Activite> {
      * @return true si égal, false sinon.
      */
     @Override
-   public boolean equals(Object objet) {
+    public boolean equals(Object objet) {
     	if(objet == this) {
     		//Les deux objets ont la même référence, se sont les mêmes.
     		return true;
-    		
-    	} else if(objet instanceof Activite) {
-    		//L'objet est un employé, se sont les même s'ils ont le même nom, prénom et date d'embauche.
-    		Activite activite = (Activite) objet;
-    		
-    		return (this.debut.equals(activite.getDebut()) && 
-    				this.difficulte.equals(activite.getDifficulte()) && 
-    				this.duree.equals(activite.getDuree()) &&
-    				this.categorie.equals(activite.getCategorie()) &&
-    				this.distanceParcouru == activite.getDistanceParcouru());
-    	} else {
-    		//L'objet n'est pas un employé, ils sont différents.
-    		return false;
-    	}
-   }
+	
+		} else if(objet instanceof Activite) {
+			//L'objet est un employé, se sont les même s'ils ont le même nom, prénom et date d'embauche.
+			Activite activite = (Activite) objet;
+			
+			return (this.debut.equals(activite.getDebut()) && 
+					this.difficulte.equals(activite.getDifficulte()) && 
+					this.duree.equals(activite.getDuree()) &&
+					this.categorie.equals(activite.getCategorie()) &&
+					this.distanceParcouru == activite.getDistanceParcouru());
+		} else {
+			//L'objet n'est pas un employé, ils sont différents.
+		    		return false;
+		}
+	}
     
     /**
      * Modifier la date de début de l'activité.

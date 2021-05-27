@@ -9,24 +9,24 @@ import modele.Activite;
 import modele.Categorie;
 import modele.Difficulte;
 import modele.Utilisateur;
-import vue.VueActivite;
-import vue.VueCategorie;
+import vue.VueActivites;
+import vue.VueCategories;
 
 /**
  * Classe controleur.
  * @author Grégoire LICHOU
  * @author Quentin COUSTURIAN
  */
-public class ControleurActivite {
+public class ControleurActivites {
 	private Utilisateur modele;
-	private VueActivite vue;
+	private VueActivites vue;
 	
 	/**
 	 * Constructeur de la classe ControleurActivité.
 	 * @param modele Le modèle de l'application.
 	 * @param vue La vue de l'activité.
 	 */
-	public ControleurActivite(Utilisateur modele, VueActivite vue) {
+	public ControleurActivites(Utilisateur modele, VueActivites vue) {
 		this.modele = modele;
 		this.vue = vue;
 		this.vue.setControleur(this);
@@ -105,8 +105,8 @@ public class ControleurActivite {
 	 * @return La catégorie sélectionné.
 	 */
 	public Categorie afficherSelectionCategorie(Categorie valeurParDefaut) {
-		VueCategorie vCategorie = new VueCategorie();
-		new ControleurCategorie(this.modele, vCategorie);
+		VueCategories vCategorie = new VueCategories();
+		new ControleurCategories(this.modele, vCategorie);
 		
 		if(valeurParDefaut != null) {	
 			return vCategorie.selectionnerCategorie(Optional.of(valeurParDefaut));

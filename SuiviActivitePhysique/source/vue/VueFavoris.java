@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import controleur.ControleurFavori;
+import controleur.ControleurFavoris;
 import modele.Categorie;
 import modele.Favori;
 import utilitaire.Clavier;
@@ -14,14 +14,14 @@ import utilitaire.Clavier;
  * @author Grégoire LICHOU
  * @author Quentin COUSTURIAN
 */
-public class VueFavori {
-	private ControleurFavori controleur;
+public class VueFavoris {
+	private ControleurFavoris controleur;
 	private Clavier clavier;
 	
 	/**
 	* Constructeur de la classe de VueFavoris.
 	*/
-	public VueFavori() {
+	public VueFavoris() {
 		clavier = new Clavier(System.in);
 	}
 	
@@ -29,7 +29,7 @@ public class VueFavori {
 	* Définir le contrôleur de cette vue.
 	* @param controleur Le controleur de la vue.
 	*/
-	public void setControleur(ControleurFavori controleur) {
+	public void setControleur(ControleurFavoris controleur) {
 		this.controleur = controleur;
 	}
 	
