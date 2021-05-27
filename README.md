@@ -19,8 +19,13 @@ Cet ensemble de liens favoris, permettra de retrouver plus facilement du contenu
 
 À chaque session d'entraînement l’utilisateur pourra renseigner les détails de l’activité qu’il vient de réaliser pour, plus tard, consulter les statistiques.
 
+## Diagramme
+
+![Diagramme de classe](/diagramme.png)
+
 ## Interface
 
+### Activités
 ```
 	[ACTIVITÉ]
 
@@ -37,6 +42,7 @@ Voici la liste de vos précédentes activités :
 1] [Entrainement] mercredi 26 mai 2021 à 21h39 (45 minutes)
 2] [Marche] mercredi 26 mai 2021 à 22h17 (35 minutes)
 ```
+### Favoris
 
 ```
 	[FAVORIS]
@@ -56,6 +62,7 @@ Voici la liste de vos favoris :
 3] [Fitness] No-excuses - Routine pour perdre du poids (20 min) - Fitness Master Class - ˹youtube.com˼
 4] [Fitness] Comment perdre rapidement du ventre ? (20 min) - Fitness Master Class - ˹youtube.com˼
 ```
+### Statistiques
 
 ```
 	[STATISTIQUES]
@@ -86,6 +93,6 @@ Saisir l'option voulue: 1
 
 [Javadoc](https://glichou.github.io/SuiviActivitePhysique)
 
-## Témécharger
+## Télécharger
 
 [Télécharger fichier .jar](https://github.com/glichou/SuiviActivitePhysique/releases/latest)
