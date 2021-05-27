@@ -23,6 +23,31 @@ Cet ensemble de liens favoris, permettra de retrouver plus facilement du contenu
 
 ![Affichage des statistiques](statistiques.png)
 
+```
+	[STATISTIQUES]
+
+1] Statistiques du mois
+2] Statistiques de la semaine
+3] Statistiques sur une période
+4] Revenir à l'accueil
+
+Saisir l'option voulue: 1
+
+[01/05/2021 au 31/05/2021]
+
++---------+--------------------+--------------------+
+|         | Distance parcourue | Durée entrainement |
++---------+--------------------+--------------------+
+| Minimum |                2km |              35min |
++---------+--------------------+--------------------+
+| Maximum |                5km |              45min |
++---------+--------------------+--------------------+
+| Moyenne |                3km |              40min |
++---------+--------------------+--------------------+
+|   Total |                7km |              80min |
++---------+--------------------+--------------------+
+```
+
 ## Documentation
 
 [Javadoc](https://glichou.github.io/SuiviActivitePhysique)
