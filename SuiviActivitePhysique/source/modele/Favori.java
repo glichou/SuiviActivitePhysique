@@ -24,6 +24,7 @@ public class Favori implements Serializable, Comparable<Favori> {
 	
 	/**
 	 * Constructeur d'un Favori.
+	 * @param titre Le titre du favori
 	 * @param lien Lien vers une vidéo ou un site.
 	 * @param duree La durée approximative de l'entrainement.
 	 * @param categorie La catégorie de l'entrainement.
@@ -84,9 +85,9 @@ public class Favori implements Serializable, Comparable<Favori> {
 
 	/**
     * Fonction qui compare deux favoris sur les critères suivant (dans cet ordre)
-    * date de création > catégorie > durée > titre > lien > memo 
+    * date de création → catégorie → durée → titre → lien → memo 
     * 
-    * @param activite L'activité que l'on souhaite comparer.
+    * @param favori Le favori que l'on souhaite comparer.
     * @return Trois valeurs possibles -1 pour plus petits, 0 pour égal et 1 pour supérieur.
     */
 	@Override
@@ -113,7 +114,7 @@ public class Favori implements Serializable, Comparable<Favori> {
     /**
      * Vérifier si deux favoris sont égales, on se base sur les attributs
      * pour déterminer s'ils sont égaux ou non.
-     * date de création > catégorie > durée > titre > lien > memo 
+     * date de création → catégorie → durée → titre → lien → memo 
      * @param objet L'objet que l'on souhaite comparer.
      * @return true si égal, false sinon.
      */

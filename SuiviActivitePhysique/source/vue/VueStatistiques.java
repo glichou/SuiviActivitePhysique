@@ -104,8 +104,8 @@ public class VueStatistiques {
 	
 	/**
 	 * Afficher les statistique pour une période donnée.
-	 * @param debut
-	 * @param fin
+	 * @param debut La période de début des statistiques.
+	 * @param fin La période de fin des statistiques.
 	 */
 	public void afficherStatistiques(LocalDate debut, LocalDate fin) {
 		Statistique statistique = this.controleur.getStatistiques(debut, fin);

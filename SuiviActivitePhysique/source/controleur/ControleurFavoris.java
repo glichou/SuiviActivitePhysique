@@ -91,7 +91,7 @@ public class ControleurFavoris {
 	 * Récupérer un favoris de l'utilisateur.
 	 * @param index L'index du favoris à récupérer.
 	 * @return Le favoris à l'index donné.
-	 * @throws Exception
+	 * @throws Exception Lever une exception s'il n'y a pas de favori à cet index.
 	 */
 	public Favori recupererFavoris(int index) throws Exception {
 		return this.modele.recupererFavori(index);

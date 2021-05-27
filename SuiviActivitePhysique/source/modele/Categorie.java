@@ -38,7 +38,7 @@ public class Categorie implements Serializable, Comparable<Categorie>{
 	
 	/**
 	 * Récupérer les informations sur la catégorie.
-	 * @param La chaine de caractères.
+	 * @return La chaine de caractères.
 	 */
 	@Override
 	public String toString() {

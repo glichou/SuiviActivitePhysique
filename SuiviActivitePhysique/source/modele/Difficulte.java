@@ -23,7 +23,7 @@ public enum Difficulte implements Serializable, Comparable<Difficulte>{
 	
 	/**
 	 * Récupérer les informations sur la difficulté.
-	 * @param La chaine de caractères.
+	 * @return La chaine de caractères.
 	 */
 	@Override
 	public String toString() {

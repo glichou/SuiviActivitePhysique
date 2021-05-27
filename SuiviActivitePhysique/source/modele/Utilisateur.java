@@ -224,6 +224,7 @@ public class Utilisateur implements Serializable {
 	/**
 	 * Ajouter une categorie dans le profil utilisateur.
 	 * @param categorie La catégorie de l'utilisateur.
+	 * @return true si ajouté, false sinon.
 	 */
 	public boolean ajouterCategorie(Categorie categorie) {
 		return (!categorieExiste(categorie) && this.categories.add(categorie));

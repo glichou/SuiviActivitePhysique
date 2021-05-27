@@ -82,7 +82,6 @@ public class ControleurActivites {
 	/**
 	 * Supprimer l'activité de l'utilisateur à l'index donné.
 	 * @param index L'index de l'activité à supprimer.
-	 * @return 
 	 * @throws Exception Lever une exception si l'activité n'existe pas.
 	 */
 	public void supprimerActivite(int index) throws Exception {

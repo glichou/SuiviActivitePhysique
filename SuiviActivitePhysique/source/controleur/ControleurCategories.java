@@ -46,7 +46,8 @@ public class ControleurCategories {
 	
 	/**
 	 * Ajouter une catégorie dans le profil de l'utilisateur.
-	 * @param libelle Le libelle de la catégorie.
+	 * @param categorie La catégorie a éjouter dans le profil.
+	 * @return Le résultat de l'opération (true si réussie, false sinon)
 	 */
 	public boolean ajouterCategorie(Categorie categorie) {
 		return this.modele.ajouterCategorie(categorie);

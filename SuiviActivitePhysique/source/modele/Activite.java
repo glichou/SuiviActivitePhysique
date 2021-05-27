@@ -105,7 +105,7 @@ public class Activite implements Serializable, Comparable<Activite> {
 
    /**
     * Fonction qui compare deux activités sur les critères suivant (dans cet ordre)
-    * début > durée > disatance parcouru > difficulte > categorie.
+    * début → durée → disatance parcouru → difficulte → categorie.
     * 
     * @param activite L'activité que l'on souhaite comparer.
     * @return Trois valeurs possibles -1 pour plus petits, 0 pour égal et 1 pour supérieur.

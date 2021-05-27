@@ -88,6 +88,7 @@ public class VueCategories {
 	
 	/**
 	 * Récupérer la catégorie sélectionné par l'utilisateur.
+	 * @param categorieParDefaut La catégorie par défaut si rien n'est saisit par l'utilisateur.
 	 * @return La catégorie sélectionné par l'utilisateur.
 	 */
 	public Categorie selectionnerCategorie(Optional<Categorie> categorieParDefaut) {

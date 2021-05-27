@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 /**
  * @author freva
- * @see https://github.com/freva/ascii-table
+ * @link https://github.com/freva/ascii-table
  */
 public class ColumnData<T> extends Column {
     private final Function<T, String> getter;

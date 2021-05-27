@@ -246,6 +246,7 @@ public class Clavier {
 	 * une valeur minimum et maximum exprimé en minutes.
 	 * @param min La durée minimum en minutes.
 	 * @param max La durée maximum en minutes.
+	 * @param valeurParDefaut La valeur par défaut si rien n'est saisit par l'utilisateur.
 	 * @return Une durée correspondant à la valeur saisit par l'utilisateur.
 	 */
 	public Duration recupererDuree(long min, long max, Optional<Duration> valeurParDefaut) {
