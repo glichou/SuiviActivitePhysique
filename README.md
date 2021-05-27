@@ -1,3 +1,13 @@
+```
+   _____       _       _    _____ _                 __   
+  / ___/__  __(_)   __(_)  / ___/(_)___ ___  ____  / /__ 
+  \__ \/ / / / / | / / /   \__ \/ / __ `__ \/ __ \/ / _ \
+ ___/ / /_/ / /| |/ / /   ___/ / / / / / / / /_/ / /  __/
+/____/\__,_/_/ |___/_/   /____/_/_/ /_/ /_/ .___/_/\___/ 
+                                         /_/             
+		Simplement là pour vous !
+```
+
 # Suivi d'activite physique
 
 Le projet de suivi d’activité a pour but de réaliser une application dans le langage java. Dans le cadre de notre formation, ce projet s’attachera principalement à la mise en place technique d’objets et leurs utilisations. Ce projet sera réalisé en binôme.
