@@ -105,6 +105,7 @@ public class Statistique {
 		return "[" + this.debut.format(formatDate) + " au " + this.fin.format(formatDate) + "]";
 	}
 	
+	@Override
 	public String toString() {
 		String[] entete = {"", "Distance parcourue", "Durée entrainement"};
 		String[][] contenu = {

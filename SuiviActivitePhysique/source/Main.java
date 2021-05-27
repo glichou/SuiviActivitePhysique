@@ -4,17 +4,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 import controleur.ControleurPrincipal;
-import modele.Activite;
-import modele.Categorie;
-import modele.Difficulte;
 import modele.ModeleApplication;
-import modele.Statistique;
 import modele.Utilisateur;
 import vue.VuePrincipale;
 

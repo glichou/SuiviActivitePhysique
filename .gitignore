@@ -32,3 +32,5 @@ Thumbs.db
 # Eclipse
 bin
 *.class
+binaire
+*.sauvegarde
