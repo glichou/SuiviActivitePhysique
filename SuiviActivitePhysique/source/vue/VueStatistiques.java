@@ -72,11 +72,25 @@ public class VueStatistiques {
 					break;
 				}
 				case 3:
-					//this.afficherUneActivite();
+					this.afficherStatistiques();
 					break;
 			}
 			System.out.println();
 		} while(numeroSaisi != 4);
+	}
+	
+	public void afficherStatistiques() {
+		System.out.print("Période de début (format JJ/MM/AAAA): ");
+		LocalDate debut = clavier.recupererDate();
+		System.out.print("Période de fin (format JJ/MM/AAAA): ");
+		LocalDate fin = clavier.recupererDate();
+		System.out.println();
+		
+		if(debut.isBefore(fin) || debut.isEqual(fin)) {
+			afficherStatistiques(debut, fin);
+		} else {
+			System.out.println("→ La période donné n'est pas valide ! La date de fin ne peut pas être avant la date de début.");
+		}
 	}
 	
 	public void afficherStatistiques(LocalDate debut, LocalDate fin) {
