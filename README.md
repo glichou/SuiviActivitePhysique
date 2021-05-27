@@ -8,3 +8,11 @@ en aggrégant divers liens (vers des vidéos de coaching, des exercices ou du co
 Cet ensemble de liens favoris, permettra de retrouver plus facilement du contenu et de garder la motivation (en rendant possible, par exemple, la recherche d’une activité d’une courte durée). De ce fait, plus d'excuses pour ne plus s'entraîner ! L’application agira comme un réel compagnon du sportif. 
 
 À chaque session d'entraînement l’utilisateur pourra renseigner les détails de l’activité qu’il vient de réaliser pour, plus tard, consulter les statistiques.
+
+# Captures d'écran
+
+![Affichage des statistiques](statisriques.png)
+
+# Documentation
+
+[Javadoc](https://glichou.github.io/SuiviActivitePhysique)
