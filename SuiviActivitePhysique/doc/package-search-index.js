@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"controleur"},{"l":"modele"},{"l":"vue"}]
