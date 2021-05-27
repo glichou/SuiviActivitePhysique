@@ -23,6 +23,8 @@ Cet ensemble de liens favoris, permettra de retrouver plus facilement du contenu
 
 ![Affichage des statistiques](statistiques.png)
 
+![Affichage des statistiques](carbon-2.png)
+
 ```
 	[STATISTIQUES]
 
