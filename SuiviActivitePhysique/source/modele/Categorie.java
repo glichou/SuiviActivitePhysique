@@ -9,6 +9,7 @@ import java.io.Serializable;
  * @version 0.1
  */
 public class Categorie implements Serializable, Comparable<Categorie>{
+	private static final long serialVersionUID = 3681265773250782786L;
 	private String libelle;
 
 	/**

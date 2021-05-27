@@ -2,6 +2,10 @@ package utilitaire;
 
 import java.util.function.Function;
 
+/**
+ * @author freva
+ * @see https://github.com/freva/ascii-table
+ */
 public class Column {
     private String header;
     private String footer;

@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
  * @version 0.1
  */
 public class Favori implements Serializable, Comparable<Favori> {
+	private static final long serialVersionUID = -4621418444296508054L;
 	private LocalDateTime dateCreation;
 	private String titre;
 	private String lien;

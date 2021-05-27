@@ -83,7 +83,9 @@ public class VueActivites {
 		} while(numeroSaisi != 6);
 	}
 	
-	
+	/**
+	 * Modifier une activité selon les informations saisit par l'utilisateur.
+	 */
 	public void modifierUneActivite() {
 		//Demander l'identifiant de l'activité si la liste n'est pas vide.
 		int index = 0;
@@ -202,6 +204,9 @@ public class VueActivites {
 		this.controleur.ajouterUneActivite(dateDebut, difficulte, duree, distance, categorie);
 	}
 	
+	/**
+	 * Supprimer une activité selon les informations saisit par l'utilisateur.
+	 */
 	public void supprimerUneActivite() {
 		//Demander l'identifiant de l'activité si la liste n'est pas vide.
 		int index = 0;

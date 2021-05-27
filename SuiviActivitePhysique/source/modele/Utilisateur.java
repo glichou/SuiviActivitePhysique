@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * @version 0.1
  */
 public class Utilisateur implements Serializable {
+	private static final long serialVersionUID = 6904217260965473460L;
 	private String nom;
 	private String prenom;
 	private int taille;

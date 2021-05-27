@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
  * @version 0.1
  */
 public class Activite implements Serializable, Comparable<Activite> {
+	private static final long serialVersionUID = -6462122725015687985L;
 	private LocalDateTime debut;
 	private Difficulte difficulte;
 	private Duration duree;

@@ -10,6 +10,7 @@ import java.time.ZoneId;
  * @author Quentin COUSTURIAN
  */
 public abstract class Mesure implements Serializable {
+	private static final long serialVersionUID = -6159225170921487252L;
 	private LocalDateTime date;
 	
 	/**

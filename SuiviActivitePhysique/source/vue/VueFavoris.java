@@ -95,6 +95,9 @@ public class VueFavoris {
 		System.out.println();
 	}
 	
+	/**
+	 * Afficher en détail un favoris demandé par l'utilisateur.
+	 */
 	public void afficherUnFavori() {
 		int index = 0;
 		if(this.controleur.recupererNbFavoris() > 0) {
@@ -114,7 +117,7 @@ public class VueFavoris {
 	}
 	
 	/**
-	 * Afficher l'ensemble des activités de l'utilisateurs.
+	 * Afficher l'ensemble des favoris de l'utilisateurs.
 	 */	
 	public void afficherLesFavoris() {
 		//Récupérer les favoris dans le profil de l'utilisateur.
@@ -133,7 +136,9 @@ public class VueFavoris {
 		System.out.println();
 	}
 	
-	// Récupérer les informations pour ajouter un favori dans le profil de l'utilisateur.
+	/**
+	 * Ajouter un favori selon les informations saisit par l'utilisateur.
+	 */
 	public void ajouterUnFavori() {
 		System.out.println(" [AJOUT D'UN FAVORI]\n");
 		
@@ -155,6 +160,9 @@ public class VueFavoris {
 		this.controleur.ajouterUnFavori(titre, lien, duree, categorie, memo);
 	}
 	
+	/**
+	 * Modifier un favori selon les informations saisit par l'utilisateur.
+	 */
 	public void modifierUnFavori() {
 		int index = 0;
 		if(this.controleur.recupererNbFavoris() > 0) {

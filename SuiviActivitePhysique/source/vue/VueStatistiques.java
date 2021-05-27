@@ -1,15 +1,21 @@
 package vue;
 
+import static java.time.temporal.TemporalAdjusters.firstDayOfMonth;
+import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
+
 import java.time.LocalDate;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
 import java.util.Locale;
 
-import static java.time.temporal.TemporalAdjusters.*;
 import controleur.ControleurStatistiques;
 import modele.Statistique;
 import utilitaire.Clavier;
 
+/**
+ * Classe de la vue statistique.
+ * @author Grégoire LICHOU
+ */
 public class VueStatistiques {
 	private ControleurStatistiques controleur;
 	private Clavier clavier;
@@ -79,6 +85,9 @@ public class VueStatistiques {
 		} while(numeroSaisi != 4);
 	}
 	
+	/**
+	 * Afficher les statistiques selon une période donnée par l'utlisateur.
+	 */
 	public void afficherStatistiques() {
 		System.out.print("Période de début (format JJ/MM/AAAA): ");
 		LocalDate debut = clavier.recupererDate();
@@ -93,6 +102,11 @@ public class VueStatistiques {
 		}
 	}
 	
+	/**
+	 * Afficher les statistique pour une période donnée.
+	 * @param debut
+	 * @param fin
+	 */
 	public void afficherStatistiques(LocalDate debut, LocalDate fin) {
 		Statistique statistique = this.controleur.getStatistiques(debut, fin);
 		

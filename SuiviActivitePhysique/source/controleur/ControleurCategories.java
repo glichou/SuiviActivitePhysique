@@ -1,6 +1,7 @@
 package controleur;
 
 import java.util.ArrayList;
+
 import modele.Categorie;
 import modele.Utilisateur;
 import vue.VueCategories;

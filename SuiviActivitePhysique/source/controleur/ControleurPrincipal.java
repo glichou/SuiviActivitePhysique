@@ -2,10 +2,10 @@ package controleur;
 
 import modele.ModeleApplication;
 import vue.VueActivites;
-import vue.VuePrincipale;
-import vue.VueStatistiques;
 import vue.VueCategories;
 import vue.VueFavoris;
+import vue.VuePrincipale;
+import vue.VueStatistiques;
 
 /**
  * Classe controleur.

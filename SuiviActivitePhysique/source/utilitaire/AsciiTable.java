@@ -9,6 +9,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * @author freva
+ * @see https://github.com/freva/ascii-table
+ */
 public class AsciiTable {
     private static final int MIN_PADDING = 1;
 

@@ -4,9 +4,9 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import modele.Utilisateur;
 import modele.Categorie;
 import modele.Favori;
+import modele.Utilisateur;
 import vue.VueCategories;
 import vue.VueFavoris;
 
